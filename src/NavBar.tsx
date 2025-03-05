@@ -1,3 +1,5 @@
+import { mergeStyles } from "@fluentui/merge-styles";
+import { MenuItem, MenuList, makeStyles } from "@fluentui/react-components";
 import { JSX } from "react";
 
 interface INavBarProps {
@@ -7,17 +9,32 @@ interface INavBarProps {
 }
 
 export interface IPageConfig {
-    name: string;
+    key: string;
     header: string;
     page: JSX.Element;
 }
 
-export function NavBar(props: INavBarProps) {
+const useStyles = makeStyles({
+  menu: {
+    display: "flex",
+    flexDirection: "row",
+    columnGap: "10px",
+  },
+  selected: {
+  },
+  navItem: {
+  },
+});
+
+export function NavBar(props: INavBarProps): JSX.Element {
     const { currentPage, pages, setCurrentPage } = props;
+    const styles = useStyles()
     
     return (
-        <div>
-            {pages.map(pageConfig => <div style={{fontWeight: currentPage==pageConfig.name ? "bold" : "normal"}} onClick={()=>setCurrentPage(pageConfig.name)}>{pageConfig.name}</div>)}
-        </div>
+        <MenuList className={styles.menu}>
+            {pages.map(pageConfig => 
+                <MenuItem dir="right" className={currentPage == pageConfig.key ? mergeStyles(styles.selected, styles.navItem) : styles.navItem} onClick={()=>setCurrentPage(pageConfig.key)}>{pageConfig.header}</MenuItem>
+            )}
+        </MenuList>
     )
 }
