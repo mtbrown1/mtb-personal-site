@@ -1,62 +1,110 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavBar, IPageConfig } from './NavBar'
-import { Info } from './pages/info';
-import { Skills } from './pages/skills';
-import { Experience } from './pages/experience';
-import { Education } from './pages/education';
-import { makeStyles } from '@fluentui/react-components';
+import { Info } from './pages/Info';
+import { Skills } from './pages/Skills';
+import { Experience } from './pages/Experience';
+import { Education } from './pages/Education';
+import { FluentProvider, makeStyles, mergeClasses, tokens } from '@fluentui/react-components';
+import { HomeFilled} from "@fluentui/react-icons";
+import { lightTheme, darkTheme } from './data/theme';
+import BackgroundImage from './assets/background.jpg';
+import BackgroundImageDark from './assets/background-dark.jpg';
+import { useMediaQuery } from 'react-responsive';
 
 const useStyles = makeStyles({
   pageContent: {
     display: "flex",
+    backgroundImage: `url(${BackgroundImage})`,
+    backgroundSize: 'cover',
+    height: "100vh",
+  },
+  pageBackgroundLight: {
+    backgroundImage: `url(${BackgroundImage})`,
+  },
+  pageBackgroundDark: {
+    backgroundImage: `url(${BackgroundImageDark})`,
   },
   leftContent: {
-    flex: 1,
+    width: "200px",
+    backgroundColor: tokens.colorNeutralBackground3,
+    margin: tokens.spacingVerticalXL,
+    borderRadius: tokens.borderRadiusXLarge,
+    padding: "5px",
   },
   rightContent: {
-    flex: 3,
+    flex: 2,
     display: "flex",
     flexDirection: "column",
   },
+  mainContent: {
+    margin: tokens.spacingVerticalXL,
+    borderRadius: tokens.borderRadiusXLarge,
+    padding: tokens.spacingVerticalXL,
+    backgroundColor: tokens.colorNeutralBackground3,
+    height: "-webkit-fill-available",
+    overflowY: "auto"
+  },
+  navBar: {
+    margin: tokens.spacingVerticalXL,
+    borderRadius: tokens.borderRadiusXLarge,
+    backgroundColor: tokens.colorNeutralBackground3,
+  }
 });
 
 function Resume() {
-  const [ currentPage, setCurrentPage]  = useState("info")
+  const [ currentPage, setCurrentPage]  = useState("info");
+  const [ darkMode, setDarkMode ] = useState(false)
+  useMediaQuery(
+    {
+      query: "(prefers-color-scheme: dark)",
+    },
+    undefined,
+    (isSystemDark) => setDarkMode(isSystemDark)
+  );
+  useEffect
   const styles = useStyles();
   const pages: Array<IPageConfig> = [
     {
       key: "info",
-      header: 'Info',
+      icon: HomeFilled,
       page: <Info />
     }, 
     {
       key: "languages",
-      header: 'Language/Technologies',
+      header: 'SKILLS',
       page: <Skills />
     }, 
     {
       key: "experience",
-      header: 'Work Experience',
+      header: 'EXPERIENCE',
       page: <Experience />
     }, 
     {
       key: "education",
-      header: 'Education',
+      header: 'EDUCATION',
       page: <Education />
     }, 
   ];
 
+  const backgroundClass = darkMode ? styles.pageBackgroundDark : styles.pageBackgroundLight;
+
   return (
-    <>
-      <div className={styles.leftContent}>
-        <div>Matthew T Brown</div>
+    <FluentProvider theme={darkMode ? darkTheme : lightTheme} >
+      <div className={mergeClasses(styles.pageContent, backgroundClass)}>
+        <div className={styles.leftContent}>
+          <div>Matt Brown</div>
+        </div>
+        <div className={styles.rightContent}>
+          <div className={styles.navBar} >
+            <NavBar pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} darkMode={darkMode} setDarkMode={setDarkMode} />
+          </div>
+          <div className={styles.mainContent} >
+            {pages.filter(pageConfig => currentPage == pageConfig.key )[0].page}
+          </div>
+        </div>
+        
       </div>
-      <div className={styles.rightContent}>
-        <NavBar pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-        {pages.map(pageConfig => currentPage == pageConfig.key && pageConfig.page )}
-      </div>
-      
-    </>
+    </FluentProvider>
   )
 }
 

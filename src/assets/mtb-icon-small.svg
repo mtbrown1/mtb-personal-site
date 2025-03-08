@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="mtbIconSmall.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="false"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="2.2792969"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showborder="false"
+     borderlayer="false" />
+  <defs
+     id="defs1">
+    <rect
+       x="114.78518"
+       y="196.68596"
+       width="457.62294"
+       height="510.57105"
+       id="rect5" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="display:inline;fill:#282828;fill-opacity:1"
+       id="path21"
+       cx="256"
+       cy="256"
+       r="256"
+       inkscape:label="circle-background" />
+    <path
+       style="display:none;fill:#aa0000;fill-opacity:1"
+       id="circle1"
+       inkscape:label="guide-arc"
+       sodipodi:type="arc"
+       sodipodi:cx="256"
+       sodipodi:cy="256"
+       sodipodi:rx="256"
+       sodipodi:ry="256"
+       sodipodi:start="2.443461"
+       sodipodi:end="2.9146999"
+       sodipodi:arc-type="slice"
+       d="M 59.892623,420.55363 A 256,256 0 0 1 6.5612634,313.58747 L 256,256 Z" />
+    <text
+       xml:space="preserve"
+       id="text4"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:405.357px;font-family:AllisDaedric;-inkscape-font-specification:AllisDaedric;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect5);display:inline;fill:#d5a149;fill-opacity:1"
+       transform="matrix(0.98810495,0,0,0.98546651,2.4084744,-188.69151)"
+       inkscape:label="m"><tspan
+         x="114.78516"
+         y="571.64077"
+         id="tspan4"><tspan
+           style="display:inline"
+           id="tspan3">M</tspan></tspan></text>
+    <g
+       id="g15"
+       inkscape:label="lines"
+       transform="translate(207.68826,244.32379)">
+      <rect
+         style="fill:#d5a149;fill-opacity:1;stroke-width:1.28918;fill-rule:nonzero"
+         id="rect8"
+         width="199.439"
+         height="15"
+         x="-151.12726"
+         y="61.763702"
+         rx="8.3099585"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1;fill-rule:nonzero"
+         id="rect7"
+         width="179.103"
+         height="15"
+         x="-130.79173"
+         y="115.24678"
+         rx="5"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1;stroke-width:1.10347;fill-rule:nonzero"
+         id="rect6"
+         width="146.108"
+         height="15"
+         x="-97.795898"
+         y="168.72986"
+         rx="6.0878348"
+         ry="5" />
+    </g>
+  </g>
+</svg>

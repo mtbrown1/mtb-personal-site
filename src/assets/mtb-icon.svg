@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="mtbIcon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="1.6117063"
+     inkscape:cx="146.42867"
+     inkscape:cy="264.62638"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="114.78518"
+       y="196.68596"
+       width="428.73817"
+       height="387.16732"
+       id="rect5" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3"
+       inkscape:label="monitor">
+      <rect
+         style="fill:#0b0b0b;fill-opacity:1;stroke-width:0.930954"
+         id="rect3"
+         width="342"
+         height="24"
+         x="85"
+         y="420"
+         rx="11.565572"
+         ry="7.4935789"
+         inkscape:label="monitor-base" />
+      <rect
+         style="fill:#0b0b0b;fill-opacity:1;stroke-width:0.715761"
+         id="rect2"
+         width="170"
+         height="22"
+         x="171"
+         y="399"
+         inkscape:label="monitor-neck" />
+      <rect
+         style="fill:#0b0b0b;fill-opacity:1"
+         id="rect1"
+         width="512"
+         height="288"
+         x="0"
+         y="112"
+         rx="10"
+         ry="10"
+         inkscape:label="monitor-screen" />
+    </g>
+    <rect
+       style="fill:#282828;fill-opacity:1"
+       id="rect4"
+       width="502"
+       height="278"
+       x="5"
+       y="117"
+       rx="10"
+       ry="10"
+       inkscape:label="screen" />
+    <text
+       xml:space="preserve"
+       id="text4"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:232px;font-family:AllisDaedric;-inkscape-font-specification:AllisDaedric;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect5);display:inline;fill:#d5a149;fill-opacity:1"
+       transform="matrix(0.98810495,0,0,0.98546651,62.354992,-81.405548)"
+       inkscape:label="m"><tspan
+         x="114.78516"
+         y="411.28555"
+         id="tspan2"><tspan
+           style="display:inline"
+           id="tspan1">M</tspan></tspan></text>
+    <g
+       id="g15"
+       inkscape:label="lines"
+       transform="translate(0,18.5)">
+      <rect
+         style="fill:#d5a149;fill-opacity:1"
+         id="rect6"
+         width="120"
+         height="15"
+         x="30"
+         y="150"
+         rx="5"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1"
+         id="rect7"
+         width="120"
+         height="15"
+         x="30"
+         y="190"
+         rx="5"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1"
+         id="rect8"
+         width="120"
+         height="15"
+         x="30"
+         y="230"
+         rx="5"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1"
+         id="rect15"
+         width="120"
+         height="15"
+         x="362"
+         y="150"
+         rx="5"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1"
+         id="rect16"
+         width="120"
+         height="15"
+         x="362"
+         y="190"
+         rx="5"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1"
+         id="rect17"
+         width="120"
+         height="15"
+         x="362"
+         y="230"
+         rx="5"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1"
+         id="rect18"
+         width="120"
+         height="15"
+         x="362"
+         y="270"
+         rx="5"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1"
+         id="rect19"
+         width="120"
+         height="15"
+         x="362"
+         y="310"
+         rx="5"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1;stroke-width:1.31022"
+         id="rect20"
+         width="206"
+         height="15"
+         x="30"
+         y="270"
+         rx="8.583333"
+         ry="5" />
+      <rect
+         style="fill:#d5a149;fill-opacity:1;stroke-width:1.31022"
+         id="rect21"
+         width="206"
+         height="15"
+         x="30"
+         y="310"
+         rx="8.583333"
+         ry="5" />
+    </g>
+  </g>
+</svg>
