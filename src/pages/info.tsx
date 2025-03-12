@@ -1,4 +1,4 @@
-import { makeStyles } from "@fluentui/react-components";
+import { Card, CardHeader, CardPreview, Link, makeStyles } from "@fluentui/react-components";
 import { JSX } from "react";
 import reactStringReplace from "react-string-replace";
 
@@ -10,7 +10,7 @@ interface ILinkConfig {
 function formatLinks(text: string, links: {[key: string]: ILinkConfig}): JSX.Element {
     const replaced = reactStringReplace(text, /\{(\w+)\}/g, (match) => {
             const linkConfig = links[match]
-            return <a href={linkConfig.url} target="_blank">{linkConfig.display}</a>
+            return <Link href={linkConfig.url} target="_blank">{linkConfig.display}</Link>
         })
     return <span>{replaced}</span>;
 }
@@ -65,8 +65,10 @@ export function Info(): JSX.Element {
         "This personal website is Matt's own creation.  He utilized {vite} to create a quick app, built the application using React, Typescript, and Fluent, then deployed in Microsoft Azure as a {azurewebapp}.",
     ]
     return (
-        <div>
+        <Card>
+            <CardHeader className={"asdf"} header="About Me" />
+            <CardPreview>{descriptionText}</CardPreview>
             <Section title="About Me" paragraphs={descriptionText}/>
-        </div>
+        </Card>
     );
 }
