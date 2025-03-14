@@ -1,4 +1,4 @@
-import { MenuItem, Tab, TabList, Theme, makeStyles, mergeClasses, tokens } from "@fluentui/react-components";
+import { MenuItem, Tab, TabList, makeStyles, mergeClasses, tokens } from "@fluentui/react-components";
 import { JSX } from "react";
 import { FluentIcon, SendFilled } from "@fluentui/react-icons"
 
@@ -27,11 +27,14 @@ const useStyles = makeStyles({
     flexWrap: "wrap",
     padding: tokens.spacingVerticalXL, 
     textAlign: "center",
-    fontWeight: "bold",
   },
   navIcon: {
     fontSize: tokens.fontSizeHero900,
     color: tokens.colorBrandForeground1,
+  },
+  navItemText: {
+    fontSize: tokens.fontSizeBase500,
+    fontWeight: tokens.fontWeightBold,
   },
   firstItem: {
     borderTopLeftRadius: tokens.borderRadiusXLarge,
@@ -64,7 +67,7 @@ export function NavBar(props: INavBarProps): JSX.Element {
                     value={pageConfig.key}
                 >
                     {pageConfig.icon && <pageConfig.icon className={styles.navIcon} />}
-                    {pageConfig.header}
+                    <div className={styles.navItemText}>{pageConfig.header}</div>
                 </Tab>
             )}
             <MenuItem  

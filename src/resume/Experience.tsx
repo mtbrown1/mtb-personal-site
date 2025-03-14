@@ -2,12 +2,6 @@
 import { JSX } from 'react';
 import experience from '../data/experience.json';
 
-export function Experience(): JSX.Element {
-    return <div>{(experience as IEmployer[]).map(employer => 
-        <Employer {...employer}/>
-    )}</div>
-}
-
 interface IEmployer {
     employerName: string;
     employerStartMonth: string;
@@ -62,4 +56,10 @@ function Role(params: IRole): JSX.Element {
         <div>{roleStartMonth} {roleStartYear} - {roleEndMonth} {roleEndYear}</div>
         {roleBullets.map(bullet => <div>- {bullet}</div>)}       
     </div>
+}
+
+export function Experience(): JSX.Element {
+    return <div>{(experience as IEmployer[]).map(employer => 
+        <Employer {...employer}/>
+    )}</div>
 }

@@ -1,38 +1,37 @@
 import { useEffect, useState } from 'react'
 import { NavBar, IPageConfig } from './NavBar'
-import { Info } from './pages/Info';
-import { Skills } from './pages/Skills';
-import { Experience } from './pages/Experience';
-import { Education } from './pages/Education';
+import { Info } from './Info';
+import { Skills } from './Skills';
+import { Experience } from './Experience';
+import { Education } from './Education';
 import { FluentProvider, makeStyles, mergeClasses, tokens } from '@fluentui/react-components';
 import { HomeFilled} from "@fluentui/react-icons";
-import { lightTheme, darkTheme } from './data/theme';
-import BackgroundImage from './assets/background.jpg';
-import BackgroundImageDark from './assets/background-dark.jpg';
+import { lightTheme, darkTheme } from '../data/theme';
 import { useMediaQuery } from 'react-responsive';
+import BackgroundImage from '../assets/background.jpg';
+import BackgroundImageDark from '../assets/background-dark.jpg';
+import MattBadge from './MattBadge';
 
 const useStyles = makeStyles({
-  pageContent: {
-    display: "flex",
-    backgroundImage: `url(${BackgroundImage})`,
-    backgroundSize: 'cover',
-    height: "100vh",
-  },
   pageBackgroundLight: {
     backgroundImage: `url(${BackgroundImage})`,
   },
   pageBackgroundDark: {
     backgroundImage: `url(${BackgroundImageDark})`,
   },
+  pageContent: {
+    display: "flex",
+    backgroundSize: 'cover',
+    height: "100vh",
+    padding: tokens.spacingVerticalXXXL,
+  },
   leftContent: {
-    width: "200px",
     backgroundColor: tokens.colorNeutralBackground3,
     margin: tokens.spacingVerticalXL,
-    borderRadius: tokens.borderRadiusXLarge,
-    padding: "5px",
+    flex: 1,
   },
   rightContent: {
-    flex: 2,
+    flex: 3,
     display: "flex",
     flexDirection: "column",
   },
@@ -67,7 +66,7 @@ function Resume() {
     {
       key: "info",
       icon: HomeFilled,
-      page: <Info />
+      page: <Info/>
     }, 
     {
       key: "languages",
@@ -92,13 +91,13 @@ function Resume() {
     <FluentProvider theme={darkMode ? darkTheme : lightTheme} >
       <div className={mergeClasses(styles.pageContent, backgroundClass)}>
         <div className={styles.leftContent}>
-          <div>Matt Brown</div>
+          <MattBadge />
         </div>
         <div className={styles.rightContent}>
           <div className={styles.navBar} >
             <NavBar pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} darkMode={darkMode} setDarkMode={setDarkMode} />
           </div>
-          <div className={styles.mainContent} >
+          <div className={styles.mainContent}>
             {pages.filter(pageConfig => currentPage == pageConfig.key )[0].page}
           </div>
         </div>

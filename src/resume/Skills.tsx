@@ -1,4 +1,3 @@
-
 enum TechCategory {
     language,
     framework,
