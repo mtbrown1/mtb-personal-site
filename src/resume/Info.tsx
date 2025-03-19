@@ -42,6 +42,7 @@ const useStyles = makeStyles({
     },
     sectionParagraph: {
         marginTop: tokens.spacingVerticalM,
+        fontSize: tokens.fontSizeBase400,
     },
 });
 

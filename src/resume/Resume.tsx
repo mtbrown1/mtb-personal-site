@@ -24,6 +24,7 @@ const useStyles = makeStyles({
     backgroundSize: 'cover',
     height: "100vh",
     padding: tokens.spacingVerticalXXXL,
+    fontFamily: tokens.fontFamilyNumeric
   },
   leftContent: {
     backgroundColor: tokens.colorNeutralBackground3,
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
   mainContent: {
     margin: tokens.spacingVerticalXL,
     borderRadius: tokens.borderRadiusXLarge,
-    padding: tokens.spacingVerticalXL,
+    padding: "48px",
     backgroundColor: tokens.colorNeutralBackground3,
     height: "-webkit-fill-available",
     overflowY: "auto"
