@@ -1,6 +1,8 @@
+import { Card, CardHeader, makeStyles, tokens } from "@fluentui/react-components";
 import moment from "moment";
+import { resolveAsset, useCommonCardStyles } from "./Utils";
 
-interface IEducation {
+interface Education {
     schoolName: string;
     schoolLocation: string;
     schoolLogo: string;
@@ -8,8 +10,10 @@ interface IEducation {
     dateAwarded: moment.Moment;
 }
 
+
+
 export function Education() {
-    const educations: Array<IEducation> = [
+    const educations: Array<Education> = [
         {
             schoolName: "Johns Hopkins University",
             schoolLocation: "Baltimore, MD",
@@ -24,12 +28,27 @@ export function Education() {
             dateAwarded: moment("Dec 2011", "MMM YYYY")
         }
     ]
-    return (<div>
-        {educations.map(edu => <div>
-            <div>{edu.schoolName}</div>
-            <div>{edu.schoolLocation}</div>
-            <div>{edu.degreeName}</div>
-            <div>{edu.dateAwarded.format("MMMM YYYY")}</div>
-        </div>)}
-    </div>)
+    return <div>
+        {educations.map(edu => <Degree {...edu} />)}
+    </div>
+}
+
+function Degree(params: Education): JSX.Element {
+    const {schoolName, schoolLocation, degreeName, dateAwarded} = params;
+    const commonCardStyles = useCommonCardStyles();
+    return <Card className={commonCardStyles.card}>
+        <CardHeader 
+            className={commonCardStyles.name}
+            header={degreeName}
+            image={<img
+                className={commonCardStyles.logo}
+                src={resolveAsset(schoolName)}
+                alt={`${schoolName} logo`}
+            />}
+            description={<div className={commonCardStyles.description}>
+                {dateAwarded.format("MMMM YYYY")}
+            </div>}
+        />
+        <div>{schoolName}</div>
+    </Card>
 }

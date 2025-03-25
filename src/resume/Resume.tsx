@@ -23,8 +23,13 @@ const useStyles = makeStyles({
     display: "flex",
     backgroundSize: 'cover',
     height: "100vh",
-    padding: tokens.spacingVerticalXXXL,
+    width: "100vw",
     fontFamily: tokens.fontFamilyNumeric
+  },
+  pageContentInner: {
+    display: "flex",
+    margin: tokens.spacingVerticalXXXL,
+    width: "-webkit-fill-available",
   },
   leftContent: {
     backgroundColor: tokens.colorNeutralBackground3,
@@ -91,6 +96,7 @@ function Resume() {
   return (
     <FluentProvider theme={darkMode ? darkTheme : lightTheme} >
       <div className={mergeClasses(styles.pageContent, backgroundClass)}>
+        <div className={styles.pageContentInner}>
         <div className={styles.leftContent}>
           <MattBadge />
         </div>
@@ -102,7 +108,7 @@ function Resume() {
             {pages.filter(pageConfig => currentPage == pageConfig.key )[0].page}
           </div>
         </div>
-        
+        </div>
       </div>
     </FluentProvider>
   )

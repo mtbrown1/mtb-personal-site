@@ -1,0 +1,162 @@
+{
+	"Technical": {
+		"Languages": [
+			{
+				"name": "Typescript",
+				"yearStarted": 2022
+			},
+			{
+				"name": "Javascript",
+				"yearStarted": 2010
+			},
+			{
+				"name": "CSS",
+				"yearStarted": 2010
+			},
+			{
+				"name": "HTML",
+				"yearStarted": 2010
+			},
+			{
+				"name": "JSX",
+				"yearStarted": 2015
+			},
+			{
+				"name": "Python",
+				"yearStarted": 2011
+			},
+			{
+				"name": "Java",
+				"yearStarted": 2014
+			}
+		],
+		"Frameworks and Supporting Technology": [
+			{
+				"name": "React",
+				"yearStarted": 2015
+			},
+			{
+				"name": "Node.js",
+				"yearStarted": 2014
+			},
+			{
+				"name": "git",
+				"yearStarted": 2012
+			},
+			{
+				"name": "D3",
+				"yearStarted": 2015
+			},
+			{
+				"name": "jQuery",
+				"yearStarted": 2010
+			}
+		],
+		"Cloud Computing": [
+			{
+				"name": "Microsoft Azure",
+				"yearStarted": 2022
+			},
+			{
+				"name": "Elasticsearch",
+				"yearStarted": 2015
+			},
+			{
+				"name": "Kibana",
+				"yearStarted": 2015
+			},
+			{
+				"name": "Kafka",
+				"yearStarted": 2015
+			}
+		]
+	},
+	"Soft": {
+		"Process Management": [
+			{
+				"name": "Agile",
+				"yearStarted": 2012
+			},
+			{
+				"name": "Scrum",
+				"yearStarted": 2014
+			},
+			{
+				"name": "SAFe",
+				"yearStarted": 2018
+			},
+			{
+				"name": "Kanban",
+				"yearStarted": 2018
+			},
+			{
+				"name": "Product Owner",
+				"yearStarted": 2018
+			},
+			{
+				"name": "Scrum Master",
+				"yearStarted": 2014
+			},
+			{
+				"name": "DevOps",
+				"yearStarted": 2018
+			},
+			{
+				"name": "CI/CD pipelines",
+				"yearStarted": 2014
+			},
+			{
+				"name": "Team problem solving",
+				"yearStarted": 2014
+			}
+		],
+		"Project Management": [
+			{
+				"name": "Budget tracking",
+				"yearStarted": 2018
+			},
+			{
+				"name": "Schedule tracking",
+				"yearStarted": 2018
+			},
+			{
+				"name": "Staffing",
+				"yearStarted": 2018
+			},
+			{
+				"name": "Upward communication",
+				"yearStarted": 2014
+			},
+			{
+				"name": "Downward communication",
+				"yearStarted": 2014
+			}
+		],
+		"People Management": [
+			{
+				"name": "Career counseling",
+				"yearStarted": 2017
+			},
+			{
+				"name": "Performance reviews",
+				"yearStarted": 2020
+			},
+			{
+				"name": "Promotions",
+				"yearStarted": 2020
+			},
+			{
+				"name": "Handling personnel issues",
+				"yearStarted": 2018
+			},
+			{
+				"name": "Individual problem solving",
+				"yearStarted": 2015
+			},
+			{
+				"name": "Individual improvement",
+				"yearStarted": 2014
+			}
+		]
+	}
+}

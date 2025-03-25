@@ -1,18 +1,21 @@
 
 import { JSX } from 'react';
 import experience from '../data/experience.json';
+import { Badge, Card, CardHeader, List, ListItem, makeStyles, tokens } from '@fluentui/react-components';
+import { resolveAsset, useCommonCardStyles } from './Utils';
+import { CircleFilled } from "@fluentui/react-icons"
 
-interface IEmployer {
+interface Employer {
     employerName: string;
     employerStartMonth: string;
     employerStartYear: string;
     employerEndMonth: string;
     employerEndYear: string;
     employerLocation: string;
-    roles: IRole[];
+    roles: Role[];
 }
 
-interface IRole {
+interface Role {
     roleName: string;
     roleProject: string;
     roleStartMonth: string;
@@ -22,7 +25,28 @@ interface IRole {
     roleBullets: string[];
 }
 
-function Employer(params: IEmployer): JSX.Element {
+const useStyles = makeStyles({
+    roleBullet: {
+        margin: tokens.spacingHorizontalXS,
+    },
+    roleInfo: {
+        fontSize: tokens.fontSizeBase200,
+    },
+    roleName: {
+        fontSize: tokens.fontSizeBase400,
+        fontWeight: tokens.fontWeightSemibold,
+    },
+})
+
+export function Experience(): JSX.Element {
+    return <div>
+        {(experience as Employer[]).map(employer => 
+            <Employer {...employer}/>
+        )}
+    </div>
+}
+
+function Employer(params: Employer): JSX.Element {
     const {
         employerName, 
         employerStartMonth, 
@@ -32,15 +56,30 @@ function Employer(params: IEmployer): JSX.Element {
         employerLocation, 
         roles
     } = params;
-    return <div>
-        <div>{employerName}</div>
-        <div>{employerStartMonth} {employerStartYear} - {employerEndMonth} {employerEndYear}</div>
-        <div>{employerLocation}</div>
-        {roles.map(role => <Role {...role} />)}
-    </div>;
+    const commonCardStyles = useCommonCardStyles();
+    return <Card className={commonCardStyles.card}>
+        <CardHeader 
+            className={commonCardStyles.name}
+            image={<img
+                className={commonCardStyles.logo}
+                src={resolveAsset(employerName)}
+                alt={`${employerName} logo`}
+            />}
+            header={employerName}
+            description={
+                <div className={commonCardStyles.description}>
+                    {employerStartMonth} {employerStartYear} - {employerEndMonth} {employerEndYear}
+                    <br />
+                    {employerLocation}
+                </div>
+            }
+        />
+        
+        {roles.map(role => <Role {...role} showDate={roles.length > 1} />)}
+    </Card>;
 }
 
-function Role(params: IRole): JSX.Element {
+function Role(params: Role & {showDate: boolean}): JSX.Element {
     const {
         roleName,
         roleProject,
@@ -48,18 +87,31 @@ function Role(params: IRole): JSX.Element {
         roleStartYear,
         roleEndMonth,
         roleEndYear,
-        roleBullets
+        roleBullets,
+        showDate
     } = params
-    return <div>
-        <div>{roleName}</div>
-        <div>{roleProject}</div>
-        <div>{roleStartMonth} {roleStartYear} - {roleEndMonth} {roleEndYear}</div>
-        {roleBullets.map(bullet => <div>- {bullet}</div>)}       
-    </div>
-}
-
-export function Experience(): JSX.Element {
-    return <div>{(experience as IEmployer[]).map(employer => 
-        <Employer {...employer}/>
-    )}</div>
+    const styles = useStyles();
+    return <Card appearance="subtle">
+        <CardHeader 
+            className={styles.roleName}
+            header={roleName}
+            description={
+                <div className={styles.roleInfo}>
+                    {roleProject}
+                    <br />
+                    {showDate && `${roleStartMonth} ${roleStartYear} - ${roleEndMonth} ${roleEndYear}`}
+                </div>}
+        />
+        <List>
+            {roleBullets.map(bullet => <ListItem>
+                <Badge 
+                    appearance="outline" 
+                    size='small'
+                    className={styles.roleBullet} 
+                    icon={<CircleFilled />} 
+                />
+                {bullet}
+            </ListItem>)}
+        </List>
+    </Card>
 }

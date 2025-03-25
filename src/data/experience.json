@@ -1,1 +1,151 @@
-[{"employerName": "Microsoft", "employerStartMonth": "March", "employerStartYear": "2022", "employerEndMonth": "January", "employerEndYear": "2025", "employerLocation": "Elkridge, MD  ", "roles": [{"roleName": "Software Engineer", "roleProject": "Cloud+AI Platform", "roleStartMonth": "March", "roleStartYear": "2022", "roleEndMonth": "January", "roleEndYear": "2025", "roleBullets": ["Contributed to Microsoft Azure\u00e2\u20ac\u2122s ML Platform and AI Foundry products, building out new features from designs, fixing bugs, and working with Project Management and Design teams to ensure customer needs are met.  Often required working under timelines to support public announcements of features or demonstrations at events like Microsoft Ignite.  ", "Built out and delivered the above products in an air gapped environment, utilizing CI/CD tools and processes and configuring them to work in the unique environment.  This involved working with outside teams and unfamiliar products to ensure initial delivery of the products, and provide continuous updates with new features and capabilities.", "Updated the Azure ML CLI and Python SDK to work in the air gapped environment, when they were not natively built that way, and created a CI/CD pipeline and instructions for users to access and utilize those tools."]}]}, {"employerName": "Northrop Grumman/Peraton", "employerStartMonth": "May", "employerStartYear": "2014", "employerEndMonth": "March", "employerEndYear": "2022", "employerLocation": "Annapolis Junction, MD  ", "roles": [{"roleName": "Technical Task Order Lead", "roleProject": "AMALGAM TTO 29 (Advanced DevOps)", "roleStartMonth": "Aug", "roleStartYear": "2020", "roleEndMonth": "March", "roleEndYear": "2022", "roleBullets": ["Responsible for schedule and budget for a task order consisting of 21 people spanning across three different development teams; communicated with multiple customer and program leaders to ensure team is working efficiently and taking care of the highest priority items; handling day-to-day issues.", "Acted as Scrum Master for a development team of 14 while there was an opening, beginning team retrospectives and getting the team back into an agile cycle after a year of poor agile leadership."]}, {"roleName": "Engineering Manager", "roleProject": "Engineering and Sciences", "roleStartMonth": "Jun", "roleStartYear": "2020", "roleEndMonth": "March", "roleEndYear": "2022", "roleBullets": ["Provided functional management for a group of up to 13 engineers who worked across different programs and have a wide range of experience levels.", "Hold one-on-one meetings to answer questions, pass along information, and provide career counseling; ensuring that employees\u00e2\u20ac\u2122 positions match their career goals and helping them to find new positions if they do not.", "Organizing and submitting awards, promotions, and performance reviews (mid-year and end-of-year), discussing feedback from myself and other coworkers/managers to make sure they are performing well and moving towards their own personal goals."]}, {"roleName": "Technical Project Manager", "roleProject": "C3D IR&D", "roleStartMonth": "Jan", "roleStartYear": "2020", "roleEndMonth": "Aug", "roleEndYear": "2020", "roleBullets": ["Generated courses of action and decided on which ones to pursue to guide the team through a difficult time after a program loss; Made budget and staffing decisions to get the project back on track when burning hot.", "Coached the team through Agile transitions as the team formed (merging two separate teams) and shifted focus from one customer to another, continuing to produce the best tech they can in an environment of empowerment and trust.", "Coordinated with capture teams, account managers, and other BD personnel to ensure the IR&D is producing the most useful technology for the customers."]}, {"roleName": "Technical Project Manager/Product Owner", "roleProject": "C3 IR&D", "roleStartMonth": "Oct", "roleStartYear": "2018", "roleEndMonth": "Dec", "roleEndYear": "2019", "roleBullets": ["Mentored and coached team members to create an environment of trust and turn the team into a highly productive, self-organizing group of engineers.", "Gathered requirements and feedback from customers and business stakeholders, turning them into technical features for the development team; Decided on technical direction and assisted team in understanding and breaking down work.", "Communicated team progress to technology stakeholders on a bi-weekly basis, covering staffing and budget information, customer feedback, and demonstrating technical progress."]}, {"roleName": "Technical Lead", "roleProject": "DVO and CSOP IR&Ds", "roleStartMonth": "Jan", "roleStartYear": "2018", "roleEndMonth": "Sep", "roleEndYear": "2018", "roleBullets": ["Mentored junior engineers in getting environments set up and accomplishing technical tasks, leading in Kanban and Scrum processes.", "Organized and executed customer engagements sessions wherein we had multiple cycles of rapid prototyping and customer feedback to guide our research and address immediate concerns.", "Organized summer intern mentor program finding volunteers to mentor one hundred interns across 6 areas in the DC/MD/VA area, pairing interns with mentors, preparing mentors by providing resources and setting expectations, gathering metrics to suggest improvements for next year.", "Built and managed pipelines in RedHat OpenShift, utilizing Jenkins, Nexus, and Maven, to rapidly deploy applications in different environments."]}, {"roleName": "Cyber Software Engineer", "roleProject": "AMBER program", "roleStartMonth": "Aug", "roleStartYear": "2016", "roleEndMonth": "Dec", "roleEndYear": "2017", "roleBullets": ["Created front-end application for system monitoring using Jersey, Tomcat, JavaScript, React.js, D3, JQuery, and other front-end libraries.", "Integrated application with back-end data store (Elasticsearch) to provide real-time status and feedback to users, made improvements to Elasticsearch configurations to fit project needs.", "Implemented Agile practices like sprint planning meetings and team retrospectives to improve team throughput and decrease strain on individual team members.", "Conducted user research to improve application, interviewing users, listening to feedback, and turning feedback into technical tasking for the team."]}, {"roleName": "Cyber Software Engineer", "roleProject": "Cloud Analytics Platform IR&D", "roleStartMonth": "May", "roleStartYear": "2014", "roleEndMonth": "Aug", "roleEndYear": "2016", "roleBullets": ["Refined product build process, integrating Maven, Gerrit, and Jenkins to create a continuous integration pipeline, decreasing product deployment time by a factor of days.", "Headed user interface development for the application, rapidly developing a functional user interface, working to integrate information from an outdated interface, worked with a User Experience (UX) team to develop optimal interfaces for users.", "Integrated multiple new technologies into an existing clustered environment, including Elasticsearch, Kibana, Flume, Kafka, and a new suite of java-based cyber analytic tools."]}]}, {"employerName": "University of Maryland CATT Lab", "employerStartMonth": "Apr", "employerStartYear": "2010", "employerEndMonth": "Apr", "employerEndYear": "2014", "employerLocation": "College Park, MD", "roles": [{"roleName": "Software Engineer, Research Assistant", "roleProject": "RITIS Web Team", "roleStartMonth": "Apr", "roleStartYear": "2010", "roleEndMonth": "Apr", "roleEndYear": "2014", "roleBullets": ["Executed user research for interdepartmental communications, used findings to begin design and implementation of a new system to make the outdated process more efficient.", "Lead a team of 4 developers to convert existing website to a PHP framework, allowing for increased code sharing and more rapid development.  This reduced excess code by 40%.", "Redesigned code to optimize usability for and omit confidential data from the initial public release of an application using Python and Django.", "Researched and Developed ways to efficiently display new data set, solving issues of time and aesthetics to meet requirements for rapidly changing data set."]}]}]
+[
+    {
+        "employerName": "Microsoft",
+        "employerStartMonth": "March",
+        "employerStartYear": "2022",
+        "employerEndMonth": "January",
+        "employerEndYear": "2025",
+        "employerLocation": "Elkridge, MD  ",
+        "roles": [
+            {
+                "roleName": "Software Engineer",
+                "roleProject": "Cloud+AI Platform",
+                "roleStartMonth": "March",
+                "roleStartYear": "2022",
+                "roleEndMonth": "January",
+                "roleEndYear": "2025",
+                "roleBullets": [
+                    "Contributed to Microsoft Azure's ML Platform and AI Foundry products, building out new features from designs, fixing bugs, and working with Project Management and Design teams to ensure customer needs are met.  Often required working under timelines to support public announcements of features or demonstrations at events like Microsoft Ignite.  ",
+                    "Built out and delivered the above products in an air gapped environment, utilizing CI/CD tools and processes and configuring them to work in the unique environment.  This involved working with outside teams and unfamiliar products to ensure initial delivery of the products, and provide continuous updates with new features and capabilities.",
+                    "Updated the Azure ML CLI and Python SDK to work in the air gapped environment, when they were not natively built that way, and created a CI/CD pipeline and instructions for users to access and utilize those tools."
+                ]
+            }
+        ]
+    },
+    {
+        "employerName": "Northrop Grumman",
+        "employerStartMonth": "May",
+        "employerStartYear": "2014",
+        "employerEndMonth": "March",
+        "employerEndYear": "2022",
+        "employerLocation": "Annapolis Junction, MD  ",
+        "roles": [
+            {
+                "roleName": "Technical Task Order Lead",
+                "roleProject": "AMALGAM TTO 29 (Advanced DevOps)",
+                "roleStartMonth": "Aug",
+                "roleStartYear": "2020",
+                "roleEndMonth": "March",
+                "roleEndYear": "2022",
+                "roleBullets": [
+                    "Responsible for schedule and budget for a task order consisting of 21 people spanning across three different development teams; communicated with multiple customer and program leaders to ensure team is working efficiently and taking care of the highest priority items; handling day-to-day issues.",
+                    "Acted as Scrum Master for a development team of 14 while there was an opening, beginning team retrospectives and getting the team back into an agile cycle after a year of poor agile leadership."
+                ]
+            },
+            {
+                "roleName": "Engineering Manager",
+                "roleProject": "Engineering and Sciences",
+                "roleStartMonth": "Jun",
+                "roleStartYear": "2020",
+                "roleEndMonth": "March",
+                "roleEndYear": "2022",
+                "roleBullets": [
+                    "Provided functional management for a group of up to 13 engineers who worked across different programs and have a wide range of experience levels.",
+                    "Hold one-on-one meetings to answer questions, pass along information, and provide career counseling; ensuring that employees' positions match their career goals and helping them to find new positions if they do not.",
+                    "Organizing and submitting awards, promotions, and performance reviews (mid-year and end-of-year), discussing feedback from myself and other coworkers/managers to make sure they are performing well and moving towards their own personal goals."
+                ]
+            },
+            {
+                "roleName": "Technical Project Manager",
+                "roleProject": "C3D IR&D",
+                "roleStartMonth": "Jan",
+                "roleStartYear": "2020",
+                "roleEndMonth": "Aug",
+                "roleEndYear": "2020",
+                "roleBullets": [
+                    "Generated courses of action and decided on which ones to pursue to guide the team through a difficult time after a program loss; Made budget and staffing decisions to get the project back on track when burning hot.",
+                    "Coached the team through Agile transitions as the team formed (merging two separate teams) and shifted focus from one customer to another, continuing to produce the best tech they can in an environment of empowerment and trust.",
+                    "Coordinated with capture teams, account managers, and other BD personnel to ensure the IR&D is producing the most useful technology for the customers."
+                ]
+            },
+            {
+                "roleName": "Technical Project Manager/Product Owner",
+                "roleProject": "C3 IR&D",
+                "roleStartMonth": "Oct",
+                "roleStartYear": "2018",
+                "roleEndMonth": "Dec",
+                "roleEndYear": "2019",
+                "roleBullets": [
+                    "Mentored and coached team members to create an environment of trust and turn the team into a highly productive, self-organizing group of engineers.",
+                    "Gathered requirements and feedback from customers and business stakeholders, turning them into technical features for the development team; Decided on technical direction and assisted team in understanding and breaking down work.",
+                    "Communicated team progress to technology stakeholders on a bi-weekly basis, covering staffing and budget information, customer feedback, and demonstrating technical progress."
+                ]
+            },
+            {
+                "roleName": "Technical Lead",
+                "roleProject": "DVO and CSOP IR&Ds",
+                "roleStartMonth": "Jan",
+                "roleStartYear": "2018",
+                "roleEndMonth": "Sep",
+                "roleEndYear": "2018",
+                "roleBullets": [
+                    "Mentored junior engineers in getting environments set up and accomplishing technical tasks, leading in Kanban and Scrum processes.",
+                    "Organized and executed customer engagements sessions wherein we had multiple cycles of rapid prototyping and customer feedback to guide our research and address immediate concerns.",
+                    "Organized summer intern mentor program finding volunteers to mentor one hundred interns across 6 areas in the DC/MD/VA area, pairing interns with mentors, preparing mentors by providing resources and setting expectations, gathering metrics to suggest improvements for next year.",
+                    "Built and managed pipelines in RedHat OpenShift, utilizing Jenkins, Nexus, and Maven, to rapidly deploy applications in different environments."
+                ]
+            },
+            {
+                "roleName": "Cyber Software Engineer",
+                "roleProject": "AMBER program",
+                "roleStartMonth": "Aug",
+                "roleStartYear": "2016",
+                "roleEndMonth": "Dec",
+                "roleEndYear": "2017",
+                "roleBullets": [
+                    "Created front-end application for system monitoring using Jersey, Tomcat, JavaScript, React.js, D3, JQuery, and other front-end libraries.",
+                    "Integrated application with back-end data store (Elasticsearch) to provide real-time status and feedback to users, made improvements to Elasticsearch configurations to fit project needs.",
+                    "Implemented Agile practices like sprint planning meetings and team retrospectives to improve team throughput and decrease strain on individual team members.",
+                    "Conducted user research to improve application, interviewing users, listening to feedback, and turning feedback into technical tasking for the team."
+                ]
+            },
+            {
+                "roleName": "Cyber Software Engineer",
+                "roleProject": "Cloud Analytics Platform IR&D",
+                "roleStartMonth": "May",
+                "roleStartYear": "2014",
+                "roleEndMonth": "Aug",
+                "roleEndYear": "2016",
+                "roleBullets": [
+                    "Refined product build process, integrating Maven, Gerrit, and Jenkins to create a continuous integration pipeline, decreasing product deployment time by a factor of days.",
+                    "Headed user interface development for the application, rapidly developing a functional user interface, working to integrate information from an outdated interface, worked with a User Experience (UX) team to develop optimal interfaces for users.",
+                    "Integrated multiple new technologies into an existing clustered environment, including Elasticsearch, Kibana, Flume, Kafka, and a new suite of java-based cyber analytic tools."
+                ]
+            }
+        ]
+    },
+    {
+        "employerName": "University of Maryland CATT Lab",
+        "employerStartMonth": "Apr",
+        "employerStartYear": "2010",
+        "employerEndMonth": "Apr",
+        "employerEndYear": "2014",
+        "employerLocation": "College Park, MD",
+        "roles": [
+            {
+                "roleName": "Software Engineer, Research Assistant",
+                "roleProject": "RITIS Web Team",
+                "roleStartMonth": "Apr",
+                "roleStartYear": "2010",
+                "roleEndMonth": "Apr",
+                "roleEndYear": "2014",
+                "roleBullets": [
+                    "Executed user research for interdepartmental communications, used findings to begin design and implementation of a new system to make the outdated process more efficient.",
+                    "Lead a team of 4 developers to convert existing website to a PHP framework, allowing for increased code sharing and more rapid development.  This reduced excess code by 40%.",
+                    "Redesigned code to optimize usability for and omit confidential data from the initial public release of an application using Python and Django.",
+                    "Researched and Developed ways to efficiently display new data set, solving issues of time and aesthetics to meet requirements for rapidly changing data set."
+                ]
+            }
+        ]
+    }
+]
