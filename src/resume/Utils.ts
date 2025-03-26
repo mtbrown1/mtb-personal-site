@@ -1,8 +1,10 @@
 import { makeStyles, tokens } from "@fluentui/react-components";
 
-export function resolveAsset(asset: string): string {
-    const ASSET_URL = "/src/assets/logos/";  
-    return `${ASSET_URL}${asset.toLowerCase().replace(/\s/g, "")}.svg`;
+export function resolveAsset(asset: string, subdir?: string): string {
+    const directory = `/src/assets${subdir ? "/" : ""}${subdir ?? ""}`;
+    const filename = `${asset.toLowerCase().replace(/\s/g, "")}`;
+    const extension = `${asset.includes('.') ? "" : ".svg"}`;
+    return `${directory}/${filename}${extension}`;
 };
 
 export const useCommonCardStyles = makeStyles({

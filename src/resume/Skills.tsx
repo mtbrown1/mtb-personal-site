@@ -1,7 +1,6 @@
 import { Card, CardHeader, CardPreview, List, ListItem, makeStyles, tokens } from "@fluentui/react-components";
 import skillData from '../data/skills.json';
 import { resolveAsset } from "./Utils";
-import { mergeStyles } from "@fluentui/merge-styles";
 
 interface Skill {
     name: string,
@@ -104,7 +103,7 @@ function SkillCard(props: {skill: Skill}) {
             <CardPreview className={styles.cardLogo}>
                 <img
                     className={styles.cardLogo}
-                    src={resolveAsset(skill.name)}
+                    src={resolveAsset(skill.name, "logos")}
                     alt={skill.name}
                     title={skill.name}
                 />

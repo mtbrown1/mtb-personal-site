@@ -1,9 +1,9 @@
 
+import { Badge, Card, CardHeader, List, ListItem, makeStyles, tokens } from '@fluentui/react-components';
+import { CircleFilled } from "@fluentui/react-icons";
 import { JSX } from 'react';
 import experience from '../data/experience.json';
-import { Badge, Card, CardHeader, List, ListItem, makeStyles, tokens } from '@fluentui/react-components';
 import { resolveAsset, useCommonCardStyles } from './Utils';
-import { CircleFilled } from "@fluentui/react-icons"
 
 interface Employer {
     employerName: string;
@@ -62,7 +62,7 @@ function Employer(params: Employer): JSX.Element {
             className={commonCardStyles.name}
             image={<img
                 className={commonCardStyles.logo}
-                src={resolveAsset(employerName)}
+                src={resolveAsset(employerName, "logos")}
                 alt={`${employerName} logo`}
             />}
             header={employerName}

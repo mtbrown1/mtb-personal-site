@@ -1,8 +1,7 @@
-import { makeStyles, tokens, Image, Card, CardHeader, List, ListItem, Text, Badge } from "@fluentui/react-components";
-import MTBLogo from '../assets/mtb-icon.svg';
-import MTBHeadshot from '../assets/mtb-canoeing.jpg';
+import { Badge, Card, CardHeader, Image, List, ListItem, makeStyles, Text, tokens } from "@fluentui/react-components";
+import { CircleFilled } from "@fluentui/react-icons";
 import moment from "moment";
-import { CircleFilled } from "@fluentui/react-icons"
+import { resolveAsset } from "./Utils";
 
 const useStyles = makeStyles({
     badge: {
@@ -39,13 +38,13 @@ function MattBadge(): JSX.Element {
         <Card appearance="subtle" className={styles.badge}>
             <CardHeader 
                 image={            
-                    <img height="40px" src={MTBLogo} />
+                    <img height="40px" src={resolveAsset("mtb-icon")} />
                 }
                 header={<div className={styles.name}>Matt Brown</div>}
                 description = {<div className={styles.title}>Software Engineer</div>}
             />
             <Image
-                src={MTBHeadshot}
+                src={resolveAsset("mtb-canoeing.jpg")}
                 fit="contain"
             />
             <List>

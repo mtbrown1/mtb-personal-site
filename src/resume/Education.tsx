@@ -1,4 +1,4 @@
-import { Card, CardHeader, makeStyles, tokens } from "@fluentui/react-components";
+import { Card, CardHeader } from "@fluentui/react-components";
 import moment from "moment";
 import { resolveAsset, useCommonCardStyles } from "./Utils";
 
@@ -34,7 +34,7 @@ export function Education() {
 }
 
 function Degree(params: Education): JSX.Element {
-    const {schoolName, schoolLocation, degreeName, dateAwarded} = params;
+    const {schoolName, degreeName, dateAwarded} = params;
     const commonCardStyles = useCommonCardStyles();
     return <Card className={commonCardStyles.card}>
         <CardHeader 
@@ -42,7 +42,7 @@ function Degree(params: Education): JSX.Element {
             header={degreeName}
             image={<img
                 className={commonCardStyles.logo}
-                src={resolveAsset(schoolName)}
+                src={resolveAsset(schoolName, "logos")}
                 alt={`${schoolName} logo`}
             />}
             description={<div className={commonCardStyles.description}>

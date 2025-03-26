@@ -1,23 +1,22 @@
-import { useEffect, useState } from 'react'
-import { NavBar, IPageConfig } from './NavBar'
-import { Info } from './Info';
-import { Skills } from './Skills';
-import { Experience } from './Experience';
-import { Education } from './Education';
 import { FluentProvider, makeStyles, mergeClasses, tokens } from '@fluentui/react-components';
-import { HomeFilled} from "@fluentui/react-icons";
-import { lightTheme, darkTheme } from '../data/theme';
+import { HomeFilled } from "@fluentui/react-icons";
+import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import BackgroundImage from '../assets/background.jpg';
-import BackgroundImageDark from '../assets/background-dark.jpg';
+import { darkTheme, lightTheme } from '../data/theme';
+import { Education } from './Education';
+import { Experience } from './Experience';
+import { Info } from './Info';
 import MattBadge from './MattBadge';
+import { IPageConfig, NavBar } from './NavBar';
+import { Skills } from './Skills';
+import { resolveAsset } from './Utils';
 
 const useStyles = makeStyles({
   pageBackgroundLight: {
-    backgroundImage: `url(${BackgroundImage})`,
+    backgroundImage: `url(${resolveAsset("background.jpg")})`,
   },
   pageBackgroundDark: {
-    backgroundImage: `url(${BackgroundImageDark})`,
+    backgroundImage: `url(${resolveAsset("background-dark.jpg")})`,
   },
   pageContent: {
     display: "flex",

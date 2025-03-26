@@ -1,6 +1,6 @@
 import { MenuItem, Tab, TabList, makeStyles, mergeClasses, tokens } from "@fluentui/react-components";
+import { FluentIcon, SendFilled } from "@fluentui/react-icons";
 import { JSX } from "react";
-import { FluentIcon, SendFilled } from "@fluentui/react-icons"
 
 
 interface INavBarProps {

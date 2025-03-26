@@ -1,6 +1,4 @@
 import * as d3 from "d3";
-import { HierarchyNode } from "d3";
-import { useEffect, useRef, useState } from "react";
 
 enum TechCategory {
     language = "Languages",
