@@ -9,14 +9,14 @@ import { Info } from './Info';
 import MattBadge from './MattBadge';
 import { IPageConfig, NavBar } from './NavBar';
 import { Skills } from './Skills';
-import { resolveAsset } from './Utils';
+import { getImage } from './Utils';
 
 const useStyles = makeStyles({
   pageBackgroundLight: {
-    backgroundImage: `url(${resolveAsset("background.jpg")})`,
+    backgroundImage: `url(${getImage("background")})`,
   },
   pageBackgroundDark: {
-    backgroundImage: `url(${resolveAsset("background-dark.jpg")})`,
+    backgroundImage: `url(${getImage("backgrounddark")})`,
   },
   pageContent: {
     display: "flex",

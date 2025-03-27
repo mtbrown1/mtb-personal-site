@@ -1,7 +1,7 @@
 import { Badge, Card, CardHeader, Image, List, ListItem, makeStyles, Text, tokens } from "@fluentui/react-components";
 import { CircleFilled } from "@fluentui/react-icons";
 import moment from "moment";
-import { resolveAsset } from "./Utils";
+import { getImage } from "./Utils";
 
 const useStyles = makeStyles({
     badge: {
@@ -38,13 +38,13 @@ function MattBadge(): JSX.Element {
         <Card appearance="subtle" className={styles.badge}>
             <CardHeader 
                 image={            
-                    <img height="40px" src={resolveAsset("mtb-icon")} />
+                    <img height="40px" src={getImage("mtbicon")} />
                 }
                 header={<div className={styles.name}>Matt Brown</div>}
                 description = {<div className={styles.title}>Software Engineer</div>}
             />
             <Image
-                src={resolveAsset("mtb-canoeing.jpg")}
+                src={getImage("mtbcanoeing")}
                 fit="contain"
             />
             <List>

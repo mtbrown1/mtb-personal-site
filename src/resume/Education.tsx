@@ -1,6 +1,6 @@
 import { Card, CardHeader } from "@fluentui/react-components";
 import moment from "moment";
-import { resolveAsset, useCommonCardStyles } from "./Utils";
+import { getImageFor, useCommonCardStyles } from "./Utils";
 
 interface Education {
     schoolName: string;
@@ -42,7 +42,7 @@ function Degree(params: Education): JSX.Element {
             header={degreeName}
             image={<img
                 className={commonCardStyles.logo}
-                src={resolveAsset(schoolName, "logos")}
+                src={getImageFor(schoolName)}
                 alt={`${schoolName} logo`}
             />}
             description={<div className={commonCardStyles.description}>

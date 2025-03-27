@@ -1,11 +1,65 @@
 import { makeStyles, tokens } from "@fluentui/react-components";
+import background from "../assets/background.jpg";
+import backgrounddark from "../assets/backgrounddark.jpg";
+import css from "../assets/logos/css.svg";
+import d3 from "../assets/logos/d3.svg";
+import elasticsearch from "../assets/logos/elasticsearch.svg";
+import git from "../assets/logos/git.svg";
+import html from "../assets/logos/html.svg";
+import java from "../assets/logos/java.svg";
+import javascript from "../assets/logos/javascript.svg";
+import johnshopkinsuniversity from "../assets/logos/johnshopkinsuniversity.svg";
+import jquery from "../assets/logos/jquery.svg";
+import jsx from "../assets/logos/jsx.svg";
+import kafka from "../assets/logos/kafka.svg";
+import kibana from "../assets/logos/kibana.svg";
+import microsoft from "../assets/logos/microsoft.svg";
+import microsoftazure from "../assets/logos/microsoftazure.svg";
+import nodejs from "../assets/logos/nodejs.svg";
+import northropgrumman from "../assets/logos/northropgrumman.svg";
+import python from "../assets/logos/python.svg";
+import react from "../assets/logos/react.svg";
+import typescript from "../assets/logos/typescript.svg";
+import universityofmaryland from "../assets/logos/universityofmaryland.svg";
+import universityofmarylandcattlab from "../assets/logos/universityofmarylandcattlab.svg";
+import mtbcanoeing from "../assets/mtbcanoeing.jpg";
+import mtbicon from "../assets/mtbicon.svg";
 
-export function resolveAsset(asset: string, subdir?: string): string {
-    const directory = `/src/assets${subdir ? "/" : ""}${subdir ?? ""}`;
-    const filename = `${asset.toLowerCase().replace(/\s/g, "")}`;
-    const extension = `${asset.includes('.') ? "" : ".svg"}`;
-    return `${directory}/${filename}${extension}`;
+const images: {[key: string]: any} = {
+    background: background,
+    backgrounddark: backgrounddark,
+    mtbicon: mtbicon,
+    mtbcanoeing: mtbcanoeing,
+    typescript: typescript,
+    javascript: javascript,
+    css: css,
+    html: html,
+    jsx: jsx,
+    python: python,
+    java: java,
+    react: react,
+    nodejs: nodejs,
+    git: git,
+    d3: d3,
+    jquery: jquery,
+    microsoftazure: microsoftazure,
+    elasticsearch: elasticsearch,
+    kibana: kibana,
+    kafka: kafka,
+    microsoft: microsoft,
+    northropgrumman: northropgrumman,
+    universityofmarylandcattlab: universityofmarylandcattlab,
+    johnshopkinsuniversity: johnshopkinsuniversity,
+    universityofmaryland: universityofmaryland,
+}
+
+export function getImage(imagename: string): any {
+    return images[imagename];
 };
+
+export function getImageFor(item: string): any {
+    return images[item.toLowerCase().replace(/\s|\./g, "")]
+}
 
 export const useCommonCardStyles = makeStyles({
     card: {
