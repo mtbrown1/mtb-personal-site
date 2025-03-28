@@ -1,31 +1,31 @@
-import { MenuItem, Tab, TabList, makeStyles, mergeClasses, tokens } from "@fluentui/react-components";
+import { Button, Tab, TabList, makeStyles, mergeClasses, tokens, useRestoreFocusTarget } from "@fluentui/react-components";
 import { FluentIcon, SendFilled } from "@fluentui/react-icons";
-import { JSX } from "react";
+import { JSX, useState } from "react";
+import { ContactMe } from "./ContactMe";
 
 
 interface INavBarProps {
-    className?: string;
-    pages: IPageConfig[];
-    darkMode: boolean;
-    currentPage: string;
-    setDarkMode(darkMode: boolean): void;
-    setCurrentPage(page: string): void;
+  pages: IPageConfig[];
+  darkMode: boolean;
+  currentPage: string;
+  setDarkMode(darkMode: boolean): void;
+  setCurrentPage(page: string): void;
 }
 
 export interface IPageConfig {
-    key: string;
-    header?: string;
-    icon?: FluentIcon;
-    page: JSX.Element;
+  key: string;
+  header?: string;
+  icon?: FluentIcon;
+  page: JSX.Element;
 }
 
 const useStyles = makeStyles({
   menu: {
+    //minWidth: "1000px"
   },
   navItem: {
     alignItems: "center",
-    flexWrap: "wrap",
-    padding: tokens.spacingVerticalXL, 
+    padding: tokens.spacingVerticalXL,
     textAlign: "center",
   },
   navIcon: {
@@ -46,37 +46,46 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusLarge,
     backgroundColor: tokens.colorBrandForeground1,
     ":hover": {
-       backgroundColor: tokens.colorNeutralForeground2BrandPressed,
+      backgroundColor: tokens.colorNeutralForeground2BrandPressed,
     },
+    textWrap: "nowrap",
+    //flexWrap: "nowrap",
+    gap: tokens.spacingHorizontalM,
   },
   contactIcon: {
-    marginLeft: tokens.spacingHorizontalM,
+    //marginLeft: tokens.spacingHorizontalM,
   }
 });
 
 export function NavBar(props: INavBarProps): JSX.Element {
-    const { currentPage, pages, className, setCurrentPage } = props;
-    const styles = useStyles()
-    
-    return (
-        <TabList size="large" defaultSelectedValue={currentPage} className={mergeClasses(className, styles.menu)}>
-            {pages.map((pageConfig, i) => 
-                <Tab
-                    className={mergeClasses(i == 0 && styles.firstItem, styles.navItem)}
-                    onClick={()=>setCurrentPage(pageConfig.key)}
-                    value={pageConfig.key}
-                >
-                    {pageConfig.icon && <pageConfig.icon className={styles.navIcon} />}
-                    <div className={styles.navItemText}>{pageConfig.header}</div>
-                </Tab>
-            )}
-            <MenuItem  
-                className={mergeClasses(styles.navItem, styles.contactMe)}                
-            >
-                Contact Me
-                <SendFilled className={styles.contactIcon} />
-            </MenuItem>
-        </TabList>
+  const { currentPage, pages, setCurrentPage } = props;
+  const styles = useStyles()
+  const [showContact, setShowContact] = useState(false);
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
 
-    )
+  return (<>
+    <TabList size="large" defaultSelectedValue={currentPage} className={styles.menu}>
+      {pages.map((pageConfig, i) =>
+        <Tab
+          className={mergeClasses(i == 0 && styles.firstItem, styles.navItem)}
+          onClick={() => setCurrentPage(pageConfig.key)}
+          value={pageConfig.key}
+        >
+          {pageConfig.icon && <pageConfig.icon className={styles.navIcon} />}
+          <div className={styles.navItemText}>{pageConfig.header}</div>
+        </Tab>
+      )}
+      <Button
+        className={mergeClasses(styles.navItem, styles.contactMe)}
+        {...restoreFocusTargetAttribute}
+        onClick={() => { setShowContact(!showContact) }}
+      >
+        Contact Me
+        <SendFilled className={styles.contactIcon} />
+      </Button>
+
+    </TabList>
+    <ContactMe show={showContact} setShow={setShowContact} />
+  </>
+  )
 }
