@@ -23,6 +23,7 @@ const useStyles = makeStyles({
     backgroundSize: 'cover',
     height: "100vh",
     width: "100vw",
+    minWidth: "1100px",
     fontFamily: tokens.fontFamilyNumeric
   },
   pageContentInner: {
@@ -56,8 +57,8 @@ const useStyles = makeStyles({
 });
 
 function Resume() {
-  const [ currentPage, setCurrentPage]  = useState("info");
-  const [ darkMode, setDarkMode ] = useState(false)
+  const [currentPage, setCurrentPage] = useState("info");
+  const [darkMode, setDarkMode] = useState(false)
   useMediaQuery(
     {
       query: "(prefers-color-scheme: dark)",
@@ -71,23 +72,23 @@ function Resume() {
     {
       key: "info",
       icon: HomeFilled,
-      page: <Info/>
-    }, 
+      page: <Info />
+    },
     {
       key: "languages",
       header: 'SKILLS',
       page: <Skills />
-    }, 
+    },
     {
       key: "experience",
       header: 'EXPERIENCE',
       page: <Experience />
-    }, 
+    },
     {
       key: "education",
       header: 'EDUCATION',
       page: <Education />
-    }, 
+    },
   ];
 
   const backgroundClass = darkMode ? styles.pageBackgroundDark : styles.pageBackgroundLight;
@@ -96,17 +97,17 @@ function Resume() {
     <FluentProvider theme={darkMode ? darkTheme : lightTheme} >
       <div className={mergeClasses(styles.pageContent, backgroundClass)}>
         <div className={styles.pageContentInner}>
-        <div className={styles.leftContent}>
-          <MattBadge />
-        </div>
-        <div className={styles.rightContent}>
-          <div className={styles.navBar} >
-            <NavBar pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} darkMode={darkMode} setDarkMode={setDarkMode} />
+          <div className={styles.leftContent}>
+            <MattBadge />
           </div>
-          <div className={styles.mainContent}>
-            {pages.filter(pageConfig => currentPage == pageConfig.key )[0].page}
+          <div className={styles.rightContent}>
+            <div className={styles.navBar} >
+              <NavBar pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} darkMode={darkMode} setDarkMode={setDarkMode} />
+            </div>
+            <div className={styles.mainContent}>
+              {pages.filter(pageConfig => currentPage == pageConfig.key)[0].page}
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </FluentProvider>
