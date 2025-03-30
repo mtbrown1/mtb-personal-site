@@ -1,7 +1,7 @@
 {
   "name": "mtbrown-personal-site",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,6 +17,8 @@
     "d3": "^7.9.0",
     "moment": "^2.30.1",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
+    "react-dom": "^18.3.1",
     "react-responsive": "^10.0.1",
     "react-string-replace": "^1.1.1"
   },

@@ -18,24 +18,21 @@ const useStyles = makeStyles({
     },
     bullets: {
         display: "flex",
-        marginBottom: "10px",
-        textIndent: "10px",
+        marginBottom: tokens.spacingVerticalS,
+        textIndent: tokens.spacingHorizontalS,
     },
     bulletText: {
         fontWeight: tokens.fontWeightSemibold,
     },
     download: {
-        //align: "center",
         marginLeft: "auto",
         marginRight: "auto",
         alignItems: "center",
         minWidth: "200px",
-        //flexWrap: "wrap",
         textWrap: "nowrap",
         gap: tokens.spacingHorizontalM,
         padding: tokens.spacingVerticalXL,
         textAlign: "center",
-        //margin: tokens.spacingVerticalL,
         borderRadius: tokens.borderRadiusLarge,
         backgroundColor: tokens.colorBrandForeground1,
         ":hover": {
@@ -47,7 +44,12 @@ const useStyles = makeStyles({
     },
 });
 
-function MattBadge(): JSX.Element {
+export interface IMattBadgeProps {
+    minimize?: boolean;
+}
+
+function MattBadge(props: IMattBadgeProps): JSX.Element {
+    const { minimize } = props;
     const styles = useStyles();
     const yearsExperience = Math.round(moment().diff(moment('2010-04-05'), 'year', true));
     const bullets = [
@@ -68,13 +70,15 @@ function MattBadge(): JSX.Element {
 
     return (
         <Card appearance="subtle" className={styles.badge}>
-            <CardHeader
-                image={
-                    <img height="40px" src={getImage("mtbicon")} />
-                }
-                header={<div className={styles.name}>Matt Brown</div>}
-                description={<div className={styles.title}>Software Engineer</div>}
-            />
+            {!minimize &&
+                <CardHeader
+                    image={
+                        <img height="40px" src={getImage("mtbicon")} />
+                    }
+                    header={<div className={styles.name}>Matt Brown</div>}
+                    description={<div className={styles.title}>Software Engineer</div>}
+                />
+            }
             <Image
                 src={getImage("mtbcanoeing")}
                 fit="contain"
@@ -87,10 +91,12 @@ function MattBadge(): JSX.Element {
                     </ListItem>
                 )}
             </List>
-            <Button className={styles.download} onClick={onButtonClick}>
-                Donwload Resume
-                <DrawerArrowDownloadRegular className={styles.downloadIcon} />
-            </Button>
+            {!minimize &&
+                <Button className={styles.download} onClick={onButtonClick}>
+                    Donwload Resume
+                    <DrawerArrowDownloadRegular className={styles.downloadIcon} />
+                </Button>
+            }
         </Card>
     )
 }

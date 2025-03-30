@@ -60,7 +60,6 @@ export function ContactMe(props: IContactMeProps) {
             message: !!form.message,
         }
         if (Object.values(newFormValidation).every(i => i)) {
-            // Disable the form
             setFormSubmitting(true);
             sendContactEmail(form).then((value) => {
                 console.log(value)

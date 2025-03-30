@@ -1,22 +1,24 @@
 import { Link, makeStyles, tokens } from "@fluentui/react-components";
 import { JSX } from "react";
+import { isMobile } from "react-device-detect";
 import reactStringReplace from "react-string-replace";
+import MattBadge from "./MattBadge";
 
 interface ILinkConfig {
     display: string;
     url: string;
 }
 
-function formatLinks(text: string, links: {[key: string]: ILinkConfig}): JSX.Element {
+function formatLinks(text: string, links: { [key: string]: ILinkConfig }): JSX.Element {
     const replaced = reactStringReplace(text, /\{(\w+)\}/g, (match) => {
-            const linkConfig = links[match]
-            return <Link href={linkConfig.url} target="_blank">{linkConfig.display}</Link>
-        })
+        const linkConfig = links[match]
+        return <Link href={linkConfig.url} target="_blank">{linkConfig.display}</Link>
+    })
     return <span>{replaced}</span>;
 }
 
-const links: {[key: string]: ILinkConfig} = {
-    aifoundry : {
+const links: { [key: string]: ILinkConfig } = {
+    aifoundry: {
         display: "AI Foundry",
         url: "https://ai.azure.com/"
     },
@@ -54,12 +56,13 @@ export function Info(): JSX.Element {
     ]
     return (
         <div>
+            {isMobile && <MattBadge minimize={true} />}
             <div className={styles.sectionTitle}>About Me</div>
-            {descriptionText.map(text => 
+            {descriptionText.map(text =>
                 <div className={styles.sectionParagraph}>
                     {formatLinks(text, links)}
                 </div>
-            )} 
+            )}
         </div>
     );
 }
