@@ -1,6 +1,7 @@
 import { FluentProvider, makeStyles, mergeClasses, tokens } from '@fluentui/react-components';
 import { HomeFilled } from "@fluentui/react-icons";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { BrowserView, MobileView } from 'react-device-detect';
 import { useMediaQuery } from 'react-responsive';
 import { darkTheme, lightTheme } from '../data/theme';
 import { Education } from './Education';
@@ -33,6 +34,7 @@ const useStyles = makeStyles({
   },
   leftContent: {
     backgroundColor: tokens.colorNeutralBackground3,
+    borderRadius: tokens.borderRadiusXLarge,
     margin: tokens.spacingVerticalXL,
     flex: 1,
   },
@@ -44,21 +46,47 @@ const useStyles = makeStyles({
   mainContent: {
     margin: tokens.spacingVerticalXL,
     borderRadius: tokens.borderRadiusXLarge,
-    padding: "48px",
     backgroundColor: tokens.colorNeutralBackground3,
     height: "-webkit-fill-available",
-    overflowY: "auto"
+    overflow: "hidden",
+  },
+  mainContentInner: {
+    padding: tokens.spacingVerticalXXXL,
+    height: "-webkit-fill-available",
+    overflowY: "auto",
   },
   navBar: {
     margin: tokens.spacingVerticalXL,
     borderRadius: tokens.borderRadiusXLarge,
     backgroundColor: tokens.colorNeutralBackground3,
-  }
+  },
+  mobilePageContent: {
+    width: "100vw",
+    height: "100vh",
+    backgroundSize: "cover",
+  },
+  mobilePageContentInner: {
+    display: "flex",
+    flexDirection: "column",
+    height: "-webkit-fill-available",
+  },
+  mobileMainContent: {
+    margin: tokens.spacingVerticalL,
+    borderRadius: tokens.borderRadiusXLarge,
+    backgroundColor: tokens.colorNeutralBackground3,
+    height: "-webkit-fill-available",
+    overflow: "hidden"
+  },
+  mobileMainContentInner: {
+    padding: tokens.spacingHorizontalL,
+    height: "-webkit-fill-available",
+    overflow: "auto",
+  },
 });
 
 function Resume() {
   const [currentPage, setCurrentPage] = useState("info");
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(false);
   useMediaQuery(
     {
       query: "(prefers-color-scheme: dark)",
@@ -66,27 +94,28 @@ function Resume() {
     undefined,
     (isSystemDark) => setDarkMode(isSystemDark)
   );
-  useEffect
+
   const styles = useStyles();
   const pages: Array<IPageConfig> = [
     {
       key: "info",
+      header: "About Matt",
       icon: HomeFilled,
       page: <Info />
     },
     {
       key: "languages",
-      header: 'SKILLS',
+      header: 'Skills',
       page: <Skills />
     },
     {
       key: "experience",
-      header: 'EXPERIENCE',
+      header: 'Experience',
       page: <Experience />
     },
     {
       key: "education",
-      header: 'EDUCATION',
+      header: 'Education',
       page: <Education />
     },
   ];
@@ -95,7 +124,7 @@ function Resume() {
 
   return (
     <FluentProvider theme={darkMode ? darkTheme : lightTheme} >
-      <div className={mergeClasses(styles.pageContent, backgroundClass)}>
+      <BrowserView className={mergeClasses(styles.pageContent, backgroundClass)}>
         <div className={styles.pageContentInner}>
           <div className={styles.leftContent}>
             <MattBadge />
@@ -105,11 +134,23 @@ function Resume() {
               <NavBar pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} darkMode={darkMode} setDarkMode={setDarkMode} />
             </div>
             <div className={styles.mainContent}>
+              <div className={styles.mainContentInner}>
+                {pages.filter(pageConfig => currentPage == pageConfig.key)[0].page}
+              </div>
+            </div>
+          </div>
+        </div>
+      </BrowserView>
+      <MobileView className={mergeClasses(styles.mobilePageContent, backgroundClass)}>
+        <div className={styles.mobilePageContentInner}>
+          <NavBar useMobile={true} pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} darkMode={darkMode} setDarkMode={setDarkMode} />
+          <div className={styles.mobileMainContent}>
+            <div className={styles.mobileMainContentInner}>
               {pages.filter(pageConfig => currentPage == pageConfig.key)[0].page}
             </div>
           </div>
         </div>
-      </div>
+      </MobileView>
     </FluentProvider>
   )
 }

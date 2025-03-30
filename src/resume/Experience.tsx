@@ -1,7 +1,8 @@
 
 import { Badge, Card, CardHeader, List, ListItem, makeStyles, tokens } from '@fluentui/react-components';
-import { CircleFilled } from "@fluentui/react-icons";
-import { JSX } from 'react';
+import { ChevronDown24Filled, ChevronRight24Filled, CircleFilled } from "@fluentui/react-icons";
+import { JSX, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import experience from '../data/experience.json';
 import { getImageFor, useCommonCardStyles } from './Utils';
 
@@ -40,46 +41,58 @@ const useStyles = makeStyles({
 
 export function Experience(): JSX.Element {
     return <div>
-        {(experience as Employer[]).map(employer => 
-            <Employer {...employer}/>
+        {(experience as Employer[]).map(employer =>
+            <Employer {...employer} />
         )}
     </div>
 }
 
 function Employer(params: Employer): JSX.Element {
     const {
-        employerName, 
-        employerStartMonth, 
-        employerStartYear, 
-        employerEndMonth, 
-        employerEndYear, 
-        employerLocation, 
+        employerName,
+        employerStartMonth,
+        employerStartYear,
+        employerEndMonth,
+        employerEndYear,
+        employerLocation,
         roles
     } = params;
+    const [isMinimized, setIsMinimized] = useState(false);
     const commonCardStyles = useCommonCardStyles();
-    return <Card className={commonCardStyles.card}>
-        <CardHeader 
-            className={commonCardStyles.name}
-            image={<img
-                className={commonCardStyles.logo}
-                src={getImageFor(employerName)}
-                alt={`${employerName} logo`}
-            />}
-            header={employerName}
-            description={
-                <div className={commonCardStyles.description}>
-                    {employerStartMonth} {employerStartYear} - {employerEndMonth} {employerEndYear}
-                    <br />
-                    {employerLocation}
-                </div>
+    return (
+        <Card
+            className={commonCardStyles.card}
+            floatingAction={isMobile ? (
+                isMinimized ?
+                    <ChevronRight24Filled onClick={() => { setIsMinimized(!isMinimized) }} />
+                    :
+                    <ChevronDown24Filled onClick={() => { setIsMinimized(!isMinimized) }} />
+            ) : undefined}
+        >
+            <CardHeader
+                className={commonCardStyles.name}
+                image={<img
+                    className={commonCardStyles.logo}
+                    src={getImageFor(employerName)}
+                    alt={`${employerName} logo`}
+                />}
+                header={employerName}
+                description={
+                    <div className={commonCardStyles.description}>
+                        {employerStartMonth} {employerStartYear} - {employerEndMonth} {employerEndYear}
+                        <br />
+                        {employerLocation}
+                    </div>
+                }
+            />
+            {!isMinimized &&
+                roles.map(role => <Role {...role} showDate={roles.length > 1} />)
             }
-        />
-        
-        {roles.map(role => <Role {...role} showDate={roles.length > 1} />)}
-    </Card>;
+        </Card>
+    );
 }
 
-function Role(params: Role & {showDate: boolean}): JSX.Element {
+function Role(params: Role & { showDate: boolean }): JSX.Element {
     const {
         roleName,
         roleProject,
@@ -92,7 +105,7 @@ function Role(params: Role & {showDate: boolean}): JSX.Element {
     } = params
     const styles = useStyles();
     return <Card appearance="subtle">
-        <CardHeader 
+        <CardHeader
             className={styles.roleName}
             header={roleName}
             description={
@@ -104,11 +117,11 @@ function Role(params: Role & {showDate: boolean}): JSX.Element {
         />
         <List>
             {roleBullets.map(bullet => <ListItem>
-                <Badge 
-                    appearance="outline" 
+                <Badge
+                    appearance="outline"
                     size='small'
-                    className={styles.roleBullet} 
-                    icon={<CircleFilled />} 
+                    className={styles.roleBullet}
+                    icon={<CircleFilled />}
                 />
                 {bullet}
             </ListItem>)}

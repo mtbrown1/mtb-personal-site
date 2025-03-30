@@ -1,4 +1,5 @@
-import { Card, CardHeader, CardPreview, List, ListItem, makeStyles, tokens } from "@fluentui/react-components";
+import { Card, CardHeader, CardPreview, Label, List, ListItem, makeStyles, tokens } from "@fluentui/react-components";
+import { isMobile } from "react-device-detect";
 import skillData from '../data/skills.json';
 import { getImageFor } from "./Utils";
 
@@ -11,7 +12,7 @@ interface SkillGroup {
     [key: string]: Skill[]
 }
 
-const skills: {[key: string]: SkillGroup} = skillData;
+const skills: { [key: string]: SkillGroup } = skillData;
 const ICONSIZE = 120;
 
 const useStyles = makeStyles({
@@ -34,6 +35,10 @@ const useStyles = makeStyles({
     listCategory: {
         display: "flex",
     },
+    listCategoryMobile: {
+        display: "flex",
+        flexDirection: "column",
+    },
     listGroup: {
         marginRight: tokens.spacingHorizontalXXXL,
         fontSize: tokens.fontSizeBase500,
@@ -51,43 +56,43 @@ const useStyles = makeStyles({
 export function Skills() {
     return <div>
         {Object.keys(skills).map((category => (
-            <SkillCategory name={category} skillGroups={skills[category]} listFormat={category=="Soft"} />
+            <SkillCategory name={category} skillGroups={skills[category]} listFormat={category == "Soft"} />
         )))}
     </div>
 }
 
-function SkillCategory(props: {name: string; skillGroups: SkillGroup; listFormat: boolean;  hideLogos?: boolean}) {
-    const {name, skillGroups, listFormat} = props;
+function SkillCategory(props: { name: string; skillGroups: SkillGroup; listFormat: boolean; hideLogos?: boolean }) {
+    const { name, skillGroups, listFormat } = props;
     const styles = useStyles();
     return <Card appearance="subtle">
         <CardHeader className={styles.category} header={`${name} Skills`} />
-        <div className={listFormat ? styles.listCategory : ""}>
+        <div className={listFormat ? (isMobile ? styles.listCategoryMobile : styles.listCategory) : ""}>
             {Object.keys(skillGroups).map(name => (
                 <SkillGroup name={name} skills={skillGroups[name]} listFormat={listFormat} />
             ))}
         </div>
     </Card>
-} 
+}
 
-function SkillGroup(props: {name: string; skills: Skill[]; listFormat: boolean; hideLogos?: boolean}): JSX.Element {
-    const {name, skills, listFormat} = props;
+function SkillGroup(props: { name: string; skills: Skill[]; listFormat: boolean; hideLogos?: boolean }): JSX.Element {
+    const { name, skills, listFormat } = props;
     const styles = useStyles()
-    return <Card 
-        appearance="subtle" 
-        size="large" 
-        orientation={"vertical"} 
+    return <Card
+        appearance="subtle"
+        size="large"
+        orientation={"vertical"}
         className={listFormat ? styles.listGroup : styles.skillGroup}
     >
         <CardHeader header={name} />
         {listFormat ? (
             <List>
-                {skills.map(skill=> (
+                {skills.map(skill => (
                     <ListItem className={styles.skillText}>{skill.name}</ListItem>
                 ))}
             </List>
         ) : (
             <div className={styles.cardGroup}>
-                {skills.map(skill=> (
+                {skills.map(skill => (
                     <SkillCard skill={skill} />
                 ))}
             </div>
@@ -95,8 +100,8 @@ function SkillGroup(props: {name: string; skills: Skill[]; listFormat: boolean; 
     </Card>
 }
 
-function SkillCard(props: {skill: Skill}) {
-    const {skill} = props;
+function SkillCard(props: { skill: Skill }) {
+    const { skill } = props;
     const styles = useStyles()
     return (
         <Card appearance="subtle" className={styles.card}>
@@ -108,6 +113,7 @@ function SkillCard(props: {skill: Skill}) {
                     title={skill.name}
                 />
             </CardPreview>
+            {isMobile && <Label>{skill.name}</Label>}
         </Card>
     )
 }
