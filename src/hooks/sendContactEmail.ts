@@ -4,7 +4,7 @@ export async function sendContactEmail(form: ContactMeForm): Promise<boolean> {
     // These are here for testing
     // await new Promise((resolve) => setTimeout(resolve, 5000));
     // return true;
-    const url = "https://brownmafunctions.azurewebsites.net/api/emailMe?code=lx7F_NowDTwTvSwzdNbpiojNzQEnQnzPGjpA2iA5Nq-qAzFu04qcsg==";
+    const url = "https://mtb-function-apps.azurewebsites.net/api/emailMe?code=DSpeqVD39VVmznincjLkcG6WOezBS1tBltV5b-fEQn17AzFu-gQr6Q==";
     try {
         const body = JSON.stringify(form);
         const response = await fetch(url, {
