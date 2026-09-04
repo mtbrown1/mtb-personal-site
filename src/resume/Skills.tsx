@@ -1,6 +1,8 @@
-import { Card, CardHeader, CardPreview, Label, List, ListItem, makeStyles, tokens } from "@fluentui/react-components";
+import { Card, CardHeader, CardPreview, Label, List, ListItem, makeStyles, Switch, tokens } from "@fluentui/react-components";
+import { useState } from "react";
 import { isMobile } from "react-device-detect";
 import skillData from '../data/skills.json';
+import { SkillsBubbles } from "./SkillsBubbles";
 import { getImageFor } from "./Utils";
 
 interface Skill {
@@ -8,7 +10,7 @@ interface Skill {
     yearStarted: number,
 }
 
-interface SkillGroup {
+export interface SkillGroup {
     [key: string]: Skill[]
 }
 
@@ -54,10 +56,16 @@ const useStyles = makeStyles({
 })
 
 export function Skills() {
+    const [bubbleMode, setBubbleMode] = useState(false)
+    //return <SkillsBubbles />
     return <div>
-        {Object.keys(skills).map((category => (
-            <SkillCategory name={category} skillGroups={skills[category]} listFormat={category == "Soft"} />
-        )))}
+        <Switch label="Use Bubble Mode" checked={bubbleMode} onChange={() => setBubbleMode(!bubbleMode)} />
+        {bubbleMode ? <SkillsBubbles skilldata={skillData} /> :
+            Object.keys(skills).map((category => (
+                <SkillCategory name={category} skillGroups={skills[category]} listFormat={category == "Soft"} />
+            )))
+
+        }
     </div>
 }
 
@@ -103,6 +111,9 @@ function SkillGroup(props: { name: string; skills: Skill[]; listFormat: boolean;
 function SkillCard(props: { skill: Skill }) {
     const { skill } = props;
     const styles = useStyles()
+    // const thisyear = new Date().getFullYear()
+    // const years = thisyear - skill.yearStarted
+    // const yearsDisplay = `${years == 0 ? "<1" : `${years}`} year${years <= 1 ? "" : "s"}`
     return (
         <Card appearance="subtle" className={styles.card}>
             <CardPreview className={styles.cardLogo}>
@@ -110,7 +121,7 @@ function SkillCard(props: { skill: Skill }) {
                     className={styles.cardLogo}
                     src={getImageFor(skill.name)}
                     alt={skill.name}
-                    title={skill.name}
+                    title={`${skill.name} since ${skill.yearStarted}`}
                 />
             </CardPreview>
             {isMobile && <Label>{skill.name}</Label>}

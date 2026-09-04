@@ -5,6 +5,8 @@ import css from "../assets/logos/css.svg";
 import d3 from "../assets/logos/d3.svg";
 import elasticsearch from "../assets/logos/elasticsearch.svg";
 import git from "../assets/logos/git.svg";
+import github from "../assets/logos/github.svg";
+import grimdark from "../assets/logos/grimdark.webp";
 import html from "../assets/logos/html.svg";
 import java from "../assets/logos/java.svg";
 import javascript from "../assets/logos/javascript.svg";
@@ -13,12 +15,15 @@ import jquery from "../assets/logos/jquery.svg";
 import jsx from "../assets/logos/jsx.svg";
 import kafka from "../assets/logos/kafka.svg";
 import kibana from "../assets/logos/kibana.svg";
+import l3harris from "../assets/logos/l3harris.svg";
+import linkedin from "../assets/logos/linkedin.svg";
 import microsoft from "../assets/logos/microsoft.svg";
 import microsoftazure from "../assets/logos/microsoftazure.svg";
 import nodejs from "../assets/logos/nodejs.svg";
 import northropgrumman from "../assets/logos/northropgrumman.svg";
 import python from "../assets/logos/python.svg";
 import react from "../assets/logos/react.svg";
+import ros2 from "../assets/logos/ros2.png";
 import typescript from "../assets/logos/typescript.svg";
 import universityofmaryland from "../assets/logos/universityofmaryland.svg";
 import universityofmarylandcattlab from "../assets/logos/universityofmarylandcattlab.svg";
@@ -44,15 +49,20 @@ const images: { [key: string]: any } = {
     git,
     d3,
     jquery,
+    ros2,
     microsoftazure,
     elasticsearch,
     kibana,
     kafka,
+    l3harris,
     microsoft,
     northropgrumman,
     universityofmarylandcattlab,
     johnshopkinsuniversity,
     universityofmaryland,
+    linkedin,
+    github,
+    grimdark,
 }
 
 export function getImage(imagename: string): any {
@@ -87,5 +97,8 @@ export const useCommonCardStyles = makeStyles({
     roleName: {
         fontSize: tokens.fontSizeBase400,
         fontWeight: tokens.fontWeightSemibold,
+    },
+    portfolioLink: {
+        maxHeight: "100px",
     },
 })

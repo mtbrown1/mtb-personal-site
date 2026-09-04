@@ -50,6 +50,10 @@
 			{
 				"name": "jQuery",
 				"yearStarted": 2010
+			},
+			{
+				"name": "ROS2",
+				"yearStarted": 2026
 			}
 		],
 		"Cloud Computing": [

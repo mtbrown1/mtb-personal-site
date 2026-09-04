@@ -12,6 +12,10 @@ import { IPageConfig, NavBar } from './NavBar';
 import { Skills } from './Skills';
 import { getImage } from './Utils';
 
+interface IResumeProps {
+  linkedPage?: string;
+}
+
 const useStyles = makeStyles({
   pageBackgroundLight: {
     backgroundImage: `url(${getImage("background")})`,
@@ -84,9 +88,11 @@ const useStyles = makeStyles({
   },
 });
 
-function Resume() {
-  const [currentPage, setCurrentPage] = useState("info");
+function Resume(props: IResumeProps) {
+  const { linkedPage = "info" } = props
+  const [currentPage, setCurrentPage] = useState(linkedPage);
   const [darkMode, setDarkMode] = useState(false);
+  console.log(currentPage)
   useMediaQuery(
     {
       query: "(prefers-color-scheme: dark)",
