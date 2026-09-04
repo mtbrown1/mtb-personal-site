@@ -111,7 +111,6 @@ export function Info(): JSX.Element {
     const portfolio = [
         { label: "grimdark", url: "https://thegrimdarkemporium.com/", description: "E-Commerce site that I made for a friend using Squarespace." }
     ]
-    console.log(portfolio)
 
     const commonCardStyles = useCommonCardStyles();
     return (

@@ -20,6 +20,7 @@ interface SkillData {
 interface Skill {
     group: TechCategory,
     name: string,
+    yearStarted: number,
     skillLevel: number,
     children: Skill[]
 }
@@ -33,8 +34,14 @@ const COLORS = [
     '#69b3a2',
 ];
 
-export function SkillsBubbles(config: { 'skilldata': { [key: string]: SkillGroup } }) {
-    const { skilldata } = config;
+interface ISkillsBubblesConfig {
+    skilldata: { [key: string]: SkillGroup }
+    width: number
+}
+
+export function SkillsBubbles(config: ISkillsBubblesConfig) {
+    const { skilldata, width: containerwidth } = config;
+
     let minyear = new Date().getFullYear()
     let maxyear = 0
     const typesUsed = []
@@ -50,7 +57,8 @@ export function SkillsBubbles(config: { 'skilldata': { [key: string]: SkillGroup
                 knownSkills.push({
                     group: skillCategory,
                     name: skill.name,
-                    skillLevel: skill.yearStarted,
+                    yearStarted: skill.yearStarted,
+                    skillLevel: 0,
                     children: [],
                 })
             })
@@ -60,14 +68,14 @@ export function SkillsBubbles(config: { 'skilldata': { [key: string]: SkillGroup
         .domain([minyear, maxyear])
         .range([5, 1])
     knownSkills = knownSkills.map(s => {
-        s.skillLevel = levelScale(s.skillLevel)
+        s.skillLevel = levelScale(s.yearStarted)
         return s
     })
-    const width = 928;
-    const height = width;
+    const height = containerwidth;
+    const width = Math.max(containerwidth, 820)
     const margin = 2;
     const labelSize = 15
-    const rectSize = 12;
+    const legendRadius = 6;
     const spacing = 20;
 
     const colorScale = d3.scaleOrdinal<string>().domain(Object.values(TechCategory)).range(COLORS);
@@ -77,7 +85,7 @@ export function SkillsBubbles(config: { 'skilldata': { [key: string]: SkillGroup
         .padding(3);
 
     const emptyRootNode: Skill = {
-        name: "", group: TechCategory.undefined, skillLevel: -1, children: knownSkills
+        name: "", group: TechCategory.undefined, skillLevel: -1, yearStarted: 0, children: knownSkills
     }
     const hierarchy: d3.HierarchyNode<Skill> = d3.hierarchy(emptyRootNode);
 
@@ -98,8 +106,11 @@ export function SkillsBubbles(config: { 'skilldata': { [key: string]: SkillGroup
                     const baseY = (-(labelSize / 2) * splitname.length) + (labelSize / 2)
                     return (
                         <g transform={`translate(${n.x}, ${n.y})`}>
-                            <circle r={n.r} fill={colorScale(n.data.group)} />
+                            <circle r={n.r} fill={colorScale(n.data.group)}>
+                                <title>{`Since ${n.data.yearStarted}`}</title>
+                            </circle>
                             <text textAnchor='middle' dominantBaseline='middle' fontSize={labelSize} clipPath={`circle(${n.r})`} x="0" y="0">
+                                <title>{`Since ${n.data.yearStarted}`}</title>
                                 {splitname.map((s, i) => (
                                     <tspan x="0" y={baseY + (labelSize * i)}>{s}</tspan>
                                 ))}
@@ -110,16 +121,16 @@ export function SkillsBubbles(config: { 'skilldata': { [key: string]: SkillGroup
                 )}
                 <g>
                     {typesUsed.map((key, i) => (
-                        <g key={key} transform={`translate(0, ${i * (rectSize + spacing / 2)})`}>
-                            <rect
-                                width={rectSize}
-                                height={rectSize}
+                        <g key={key} transform={`translate(0, ${i * (legendRadius + spacing / 2)})`}>
+                            <circle
+                                r={legendRadius}
                                 fill={colorScale(key)}
-                                rx={2}
+                                cx={legendRadius}
+                                cy={legendRadius}
                             />
                             <text
-                                x={rectSize + 8}
-                                y={rectSize / 2}
+                                x={legendRadius * 2 + 4}
+                                y={legendRadius }
                                 alignmentBaseline="middle"
                                 fontSize={labelSize * .85}
                             >
