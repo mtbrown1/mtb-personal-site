@@ -62,7 +62,6 @@ export function ContactMe(props: IContactMeProps) {
         if (Object.values(newFormValidation).every(i => i)) {
             setFormSubmitting(true);
             sendContactEmail(form).then((value) => {
-                console.log(value)
                 if (value) {
                     setShow(false);
                     setForm(defaultForm);

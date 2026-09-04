@@ -1,5 +1,7 @@
 import * as d3 from "d3";
 
+import { SkillGroup } from "./Skills";
+
 enum TechCategory {
     language = "Languages",
     framework = "Frameworks and Supporting Technology",
@@ -7,12 +9,19 @@ enum TechCategory {
     process = "Process Management and Improvement",
     project = "Project Management",
     people = "People Management",
+    undefined = "Unknown",
+}
+
+interface SkillData {
+    name: string;
+    yearStarted: number;
 }
 
 interface Skill {
-    group: TechCategory, 
+    group: TechCategory,
     name: string,
-    level: number,
+    skillLevel: number,
+    children: Skill[]
 }
 
 const COLORS = [
@@ -22,65 +31,104 @@ const COLORS = [
     '#9a6fb0',
     '#a53253',
     '#69b3a2',
-  ];
+];
 
-export function Skills() {
-    const knownSkills: Skill[] = [
-        ...["Typescript","Javascript","CSS","HTML","JSX","Python","Java"]
-            .map(s=> {return {group: TechCategory.language, name: s, level: 5}}),
-        ...["React.js", "Node.js", "git", "Jersey", "Tomcat", "D3", "jQuery"]
-            .map(s=> {return {group: TechCategory.framework, name: s, level: 4}}),
-        ...["Microsoft Azure", "Azure Blob Storage", "Elasticsearch", "Kibana", "Kafka"]
-            .map(s=> {return {group: TechCategory.cloud, name: s, level: 3}}),
-        ...["Agile", "Scrum", "SAFe", "Kanban", "Product Owner", "Scrum Master", "DevOps", "CI/CD Pipelines", "Team problem solving"]
-            .map(s=> {return {group: TechCategory.process, name: s, level: 2}}),
-        ...["Budget Tracking", "Schedule Tracking", "Staffing", "Communicating customer and project needs", "Reporting team progress to stakeholders"]
-            .map(s=> {return {group: TechCategory.project, name: s, level: 1}}),
-        ...["Career Counseling", "Performance Reviews", "Promotions", "Handling personnel issues", "Individual problem solving", "Individual improvement"]
-            .map(s=> {return {group: TechCategory.people, name: s, level: 1}}),
-
-    ];
+export function SkillsBubbles(config: { 'skilldata': { [key: string]: SkillGroup } }) {
+    const { skilldata } = config;
+    let minyear = new Date().getFullYear()
+    let maxyear = 0
+    const typesUsed = []
+    let knownSkills: Skill[] = []
+    for (const types of Object.values(skilldata)) {
+        for (const [key, value] of Object.entries(types)) {
+            typesUsed.push(key)
+            const skillCategory = key as TechCategory;
+            const skillGroup = value as SkillData[];
+            skillGroup.forEach((skill: SkillData) => {
+                minyear = Math.min(skill.yearStarted, minyear);
+                maxyear = Math.max(skill.yearStarted, maxyear);
+                knownSkills.push({
+                    group: skillCategory,
+                    name: skill.name,
+                    skillLevel: skill.yearStarted,
+                    children: [],
+                })
+            })
+        }
+    }
+    const levelScale = d3.scaleLinear()
+        .domain([minyear, maxyear])
+        .range([5, 1])
+    knownSkills = knownSkills.map(s => {
+        s.skillLevel = levelScale(s.skillLevel)
+        return s
+    })
     const width = 928;
     const height = width;
     const margin = 2;
-    const BUBBLE_MIN_SIZE = 30;
-    const BUBBLE_MAX_SIZE = 80;
-
-    const nodes = knownSkills.map((d) => ({ ...d }));
-
-    const [min, max] = d3.extent(nodes.map((d) => d.level)) as [number, number];
-    const sizeScale = d3.scaleSqrt()
-        .domain([min, max])
-        .range([BUBBLE_MIN_SIZE, BUBBLE_MAX_SIZE]);
+    const labelSize = 15
+    const rectSize = 12;
+    const spacing = 20;
 
     const colorScale = d3.scaleOrdinal<string>().domain(Object.values(TechCategory)).range(COLORS);
 
     const pack = d3.pack<Skill>()
         .size([width - margin * 2, height - margin * 2])
         .padding(3);
-    
-    console.log(knownSkills)
-    const hierarchy = d3.hierarchy({name: "", level: -1, children: [
-        ...knownSkills
-    ]});
 
-    const root = pack(hierarchy.sum(d => d.level) as unknown as d3.HierarchyNode<Skill>);
+    const emptyRootNode: Skill = {
+        name: "", group: TechCategory.undefined, skillLevel: -1, children: knownSkills
+    }
+    const hierarchy: d3.HierarchyNode<Skill> = d3.hierarchy(emptyRootNode);
+
+    hierarchy.sum(d => d.skillLevel);
+    const root = pack(hierarchy);
+
     return (
         <div>
-            <svg 
-            style={{
-            width,
-            height,
-            }}
-            width={width}
-            height={height}>
-                {root.leaves().map(n => 
-                    <g>
-                        <circle cx={n.x} cy={n.y} r={sizeScale(n.value!)} fill={colorScale(n.data.group)}/>
-                        <text style={{'textAnchor': 'middle'}} clipPath={`circle(${sizeScale(n.value!)})`} x={n.x} y={n.y}>{n.data.name}</text>
-                    </g>
+            <svg
+                style={{
+                    width,
+                    height,
+                }}
+                width={width}
+                height={height}>
+                {root.leaves().map(n => {
+                    const splitname = n.data.name.split(" ")
+                    const baseY = (-(labelSize / 2) * splitname.length) + (labelSize / 2)
+                    return (
+                        <g transform={`translate(${n.x}, ${n.y})`}>
+                            <circle r={n.r} fill={colorScale(n.data.group)} />
+                            <text textAnchor='middle' dominantBaseline='middle' fontSize={labelSize} clipPath={`circle(${n.r})`} x="0" y="0">
+                                {splitname.map((s, i) => (
+                                    <tspan x="0" y={baseY + (labelSize * i)}>{s}</tspan>
+                                ))}
+                            </text>
+                        </g>
+                    )
+                }
                 )}
+                <g>
+                    {typesUsed.map((key, i) => (
+                        <g key={key} transform={`translate(0, ${i * (rectSize + spacing / 2)})`}>
+                            <rect
+                                width={rectSize}
+                                height={rectSize}
+                                fill={colorScale(key)}
+                                rx={2}
+                            />
+                            <text
+                                x={rectSize + 8}
+                                y={rectSize / 2}
+                                alignmentBaseline="middle"
+                                fontSize={labelSize * .85}
+                            >
+                                {key}
+                            </text>
+                        </g>
+                    ))}
+                </g>
             </svg>
-        </div>
+        </div >
     );
 }

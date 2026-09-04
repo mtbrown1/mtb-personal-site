@@ -1,11 +1,35 @@
 [
     {
+        "employerName": "L3Harris",
+        "employerStartMonth": "August",
+        "employerStartYear": "2025",
+        "employerEndMonth": "",
+        "employerEndYear": "",
+        "employerLocation": "Fully Remote",
+        "roles": [
+            {
+                "roleName": "Software Engineer",
+                "roleProject": "Collaborative Autonomy IR&D",
+                "roleStartMonth": "August",
+                "roleStartYear": "2025",
+                "roleEndMonth": "",
+                "roleEndYear": "",
+                "roleBullets": [
+                    "Created ROS2 nodes from scratch using Python, standing up new microservices to run embedded software components, enabling replacement of a core piece of software that was previously filled by a competitor.",
+                    "Stood up automated build pipelines in Jenkins for over 20 different software components, often creating individualized Docker containers for the unique build environments, ultimately cutting build times from 30+ minutes to 1-2 minutes.",
+                    "Standardized and documented build steps in the DevSecOps pipelines, configuring Jenkins, Bitbucket, and Artifactory to ensure that team members deploying the software components could easily find and access the latest versions of the software.",
+                    "Created a framework to simulate software components in Azure Kubernetes pods, allowing for integration testing between components before deploying them to actual hardware, thus decreasing the risk of deployment issues when testing hardware or preparing it for demonstrations."
+                ]
+            }
+        ]
+    },
+    {
         "employerName": "Microsoft",
         "employerStartMonth": "March",
         "employerStartYear": "2022",
         "employerEndMonth": "January",
         "employerEndYear": "2025",
-        "employerLocation": "Elkridge, MD  ",
+        "employerLocation": "Elkridge, MD",
         "roles": [
             {
                 "roleName": "Software Engineer",

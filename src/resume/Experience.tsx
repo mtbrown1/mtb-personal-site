@@ -59,6 +59,10 @@ function Employer(params: Employer): JSX.Element {
     } = params;
     const [isMinimized, setIsMinimized] = useState(false);
     const commonCardStyles = useCommonCardStyles();
+    let endmonth = employerEndMonth + " " + employerEndYear
+    if (employerEndMonth == "" && employerEndYear == "") {
+        endmonth = "Present"
+    }
     return (
         <Card
             className={commonCardStyles.card}
@@ -79,7 +83,7 @@ function Employer(params: Employer): JSX.Element {
                 header={employerName}
                 description={
                     <div className={commonCardStyles.description}>
-                        {employerStartMonth} {employerStartYear} - {employerEndMonth} {employerEndYear}
+                        {employerStartMonth} {employerStartYear} - {endmonth}
                         <br />
                         {employerLocation}
                     </div>
