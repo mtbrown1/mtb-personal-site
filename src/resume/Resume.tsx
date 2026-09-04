@@ -92,7 +92,6 @@ function Resume(props: IResumeProps) {
   const { linkedPage = "info" } = props
   const [currentPage, setCurrentPage] = useState(linkedPage);
   const [darkMode, setDarkMode] = useState(false);
-  console.log(currentPage)
   useMediaQuery(
     {
       query: "(prefers-color-scheme: dark)",

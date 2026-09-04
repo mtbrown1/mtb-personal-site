@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardPreview, Label, List, ListItem, makeStyles, Switch, tokens } from "@fluentui/react-components";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import skillData from '../data/skills.json';
 import { SkillsBubbles } from "./SkillsBubbles";
@@ -57,10 +57,32 @@ const useStyles = makeStyles({
 
 export function Skills() {
     const [bubbleMode, setBubbleMode] = useState(false)
+    
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [width, setWidth] = useState<number>(0);
+    useEffect(() => {
+        const element = containerRef.current;
+        if (!element) return;
+
+        // Set initial width
+        setWidth(element.getBoundingClientRect().width);
+
+        // Observe changes to the container size
+        const observer = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+            setWidth(entry.contentRect.width);
+        }
+        });
+
+        observer.observe(element);
+
+        // Cleanup observer on unmount
+        return () => observer.disconnect();
+    }, []);
     //return <SkillsBubbles />
-    return <div>
-        <Switch label="Use Bubble Mode" checked={bubbleMode} onChange={() => setBubbleMode(!bubbleMode)} />
-        {bubbleMode ? <SkillsBubbles skilldata={skillData} /> :
+    return <div ref={containerRef}>
+        { !isMobile && <Switch label="Use Bubble Mode" checked={bubbleMode} onChange={() => setBubbleMode(!bubbleMode)} />}
+        {bubbleMode ? <SkillsBubbles skilldata={skillData} width={width} /> :
             Object.keys(skills).map((category => (
                 <SkillCategory name={category} skillGroups={skills[category]} listFormat={category == "Soft"} />
             )))
