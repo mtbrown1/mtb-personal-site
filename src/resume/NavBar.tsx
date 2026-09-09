@@ -62,9 +62,14 @@ const useStyles = makeStyles({
   mobileNavButton: {
     color: tokens.colorBrandForeground1,
   },
-  mobileBannerName: {},
+  mobileBannerName: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: tokens.fontSizeBase500,
+  },
   mobileBannerLogo: {
-    width: tokens.spacingVerticalXXL,
+    width: tokens.spacingVerticalXXXL,
   },
 });
 
@@ -80,7 +85,7 @@ export function NavBar(props: INavBarProps): JSX.Element {
       <div className={styles.mobileBanner}>
         <Button
           appearance="transparent"
-          size="small"
+          size="large"
           className={styles.mobileNavButton}
           icon={<NavigationFilled />}
           onClick={() => setIsMobileNavOpen(true)}

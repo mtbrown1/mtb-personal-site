@@ -91,12 +91,10 @@ function MattBadge(props: IMattBadgeProps): JSX.Element {
                     </ListItem>
                 )}
             </List>
-            {!minimize &&
-                <Button className={styles.download} onClick={onButtonClick}>
-                    Donwload Resume
-                    <DrawerArrowDownloadRegular className={styles.downloadIcon} />
-                </Button>
-            }
+            <Button className={styles.download} onClick={onButtonClick}>
+                Donwload Resume
+                <DrawerArrowDownloadRegular className={styles.downloadIcon} />
+            </Button>
         </Card>
     )
 }
