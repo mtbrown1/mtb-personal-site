@@ -2,6 +2,7 @@ import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, Image, Men
 import { Dismiss24Regular, FluentIcon, NavigationFilled, SendFilled } from "@fluentui/react-icons";
 import { JSX, useState } from "react";
 import { ContactMe } from "./ContactMe";
+import { DownloadResume } from "./MattBadge";
 import { getImage } from "./Utils";
 
 
@@ -75,7 +76,7 @@ const useStyles = makeStyles({
 
 export function NavBar(props: INavBarProps): JSX.Element {
   const { currentPage, pages, useMobile, setCurrentPage } = props;
-  const styles = useStyles()
+  const styles = useStyles();
   const [showContact, setShowContact] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const restoreFocusTargetAttribute = useRestoreFocusTarget();
@@ -120,6 +121,7 @@ export function NavBar(props: INavBarProps): JSX.Element {
                   {pageConfig.header}
                 </MenuItem>
               )}
+              <DownloadResume minimize={true} />
             </MenuList>
           </DrawerBody>
         </Drawer>
