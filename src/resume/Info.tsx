@@ -68,7 +68,7 @@ interface IInfoIconConfig {
     label: string;
     url: string;
     description: string;
-    setDescription(val: string): void;
+    setDescription?(val: string): void;
 }
 
 function InfoIcon(config: IInfoIconConfig): JSX.Element {
@@ -86,10 +86,10 @@ function InfoIcon(config: IInfoIconConfig): JSX.Element {
                     src={getImageFor(label)}
                     alt={`${label} logo`}
                     onMouseEnter={() => {
-                        setDescription(description)
+                        setDescription && setDescription(description)
                     }}
                     onMouseLeave={() => {
-                        setDescription("")
+                        setDescription && setDescription("")
                     }}
                 />
             </Link>
@@ -127,13 +127,7 @@ export function Info(): JSX.Element {
             <div className={styles.section}>
                 <div className={styles.sectionTitle}>Where to find me</div>
                 {findme.map(link =>
-                    <div className={styles.sectionLink}>
-                        <img
-                            className={commonCardStyles.logo}
-                            src={getImageFor(link.label)}
-                            alt={`${link.label} logo`}
-                        />
-                    </div>
+                    <InfoIcon label={link.label} description={link.url} url={link.url} />
                 )}
             </div>
             <div className={styles.section}>
