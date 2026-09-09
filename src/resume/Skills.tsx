@@ -57,7 +57,7 @@ const useStyles = makeStyles({
 
 export function Skills() {
     const [bubbleMode, setBubbleMode] = useState(false)
-    
+
     const containerRef = useRef<HTMLDivElement>(null);
     const [width, setWidth] = useState<number>(0);
     useEffect(() => {
@@ -69,9 +69,9 @@ export function Skills() {
 
         // Observe changes to the container size
         const observer = new ResizeObserver((entries) => {
-        for (let entry of entries) {
-            setWidth(entry.contentRect.width);
-        }
+            for (let entry of entries) {
+                setWidth(entry.contentRect.width);
+            }
         });
 
         observer.observe(element);
@@ -79,10 +79,10 @@ export function Skills() {
         // Cleanup observer on unmount
         return () => observer.disconnect();
     }, []);
-    //return <SkillsBubbles />
     return <div ref={containerRef}>
-        { !isMobile && <Switch label="Use Bubble Mode" checked={bubbleMode} onChange={() => setBubbleMode(!bubbleMode)} />}
+        {!isMobile && <Switch label="Use Bubble Mode" checked={bubbleMode} onChange={() => setBubbleMode(!bubbleMode)} />}
         {bubbleMode ? <SkillsBubbles skilldata={skillData} width={width} /> :
+
             Object.keys(skills).map((category => (
                 <SkillCategory name={category} skillGroups={skills[category]} listFormat={category == "Soft"} />
             )))
@@ -133,9 +133,6 @@ function SkillGroup(props: { name: string; skills: Skill[]; listFormat: boolean;
 function SkillCard(props: { skill: Skill }) {
     const { skill } = props;
     const styles = useStyles()
-    // const thisyear = new Date().getFullYear()
-    // const years = thisyear - skill.yearStarted
-    // const yearsDisplay = `${years == 0 ? "<1" : `${years}`} year${years <= 1 ? "" : "s"}`
     return (
         <Card appearance="subtle" className={styles.card}>
             <CardPreview className={styles.cardLogo}>

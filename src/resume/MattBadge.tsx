@@ -1,4 +1,4 @@
-import { Badge, Button, Card, CardHeader, Image, List, ListItem, makeStyles, Text, tokens } from "@fluentui/react-components";
+import { Badge, Button, Card, CardHeader, Image, List, ListItem, makeStyles, MenuItem, Text, tokens } from "@fluentui/react-components";
 import { CircleFilled, DrawerArrowDownloadRegular } from "@fluentui/react-icons";
 import moment from "moment";
 import resume from "../assets/MTBResume.pdf";
@@ -24,7 +24,10 @@ const useStyles = makeStyles({
     bulletText: {
         fontWeight: tokens.fontWeightSemibold,
     },
-    download: {
+});
+
+const useDownloadStyles = makeStyles({
+    downloadButton: {
         marginLeft: "auto",
         marginRight: "auto",
         alignItems: "center",
@@ -42,7 +45,30 @@ const useStyles = makeStyles({
     downloadIcon: {
         fontSize: tokens.fontSizeBase500,
     },
-});
+})
+
+export function DownloadResume(props: { minimize?: boolean }): JSX.Element {
+    const { minimize } = props;
+    const downloadStyles = useDownloadStyles();
+    const onButtonClick = () => {
+        let alink = document.createElement("a");
+        alink.href = resume;
+        alink.download = "MTBResume.pdf";
+        alink.click();
+        document.body.removeChild(alink);
+    };
+    return minimize ? (
+        <MenuItem icon={< DrawerArrowDownloadRegular className={downloadStyles.downloadIcon} />} onClick={onButtonClick}>
+            Donwload Resume
+        </MenuItem >
+    ) : (
+        <Button className={downloadStyles.downloadButton
+        } onClick={onButtonClick} >
+            Donwload Resume
+            < DrawerArrowDownloadRegular className={downloadStyles.downloadIcon} />
+        </Button >
+    )
+}
 
 export interface IMattBadgeProps {
     minimize?: boolean;
@@ -58,15 +84,6 @@ function MattBadge(props: IMattBadgeProps): JSX.Element {
         "Experience from development to project mangement",
         "Love for working with great people and great teams"
     ]
-
-    const onButtonClick = () => {
-        let alink = document.createElement("a");
-        alink.href = resume;
-        alink.download = "MTBResume.pdf";
-        alink.click();
-        document.body.removeChild(alink);
-
-    };
 
     return (
         <Card appearance="subtle" className={styles.badge}>
@@ -91,12 +108,7 @@ function MattBadge(props: IMattBadgeProps): JSX.Element {
                     </ListItem>
                 )}
             </List>
-            {!minimize &&
-                <Button className={styles.download} onClick={onButtonClick}>
-                    Donwload Resume
-                    <DrawerArrowDownloadRegular className={styles.downloadIcon} />
-                </Button>
-            }
+            {!minimize && <DownloadResume />}
         </Card>
     )
 }

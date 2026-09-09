@@ -2,6 +2,7 @@ import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, Image, Men
 import { Dismiss24Regular, FluentIcon, NavigationFilled, SendFilled } from "@fluentui/react-icons";
 import { JSX, useState } from "react";
 import { ContactMe } from "./ContactMe";
+import { DownloadResume } from "./MattBadge";
 import { getImage } from "./Utils";
 
 
@@ -62,15 +63,20 @@ const useStyles = makeStyles({
   mobileNavButton: {
     color: tokens.colorBrandForeground1,
   },
-  mobileBannerName: {},
+  mobileBannerName: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: tokens.fontSizeBase500,
+  },
   mobileBannerLogo: {
-    width: tokens.spacingVerticalXXL,
+    width: tokens.spacingVerticalXXXL,
   },
 });
 
 export function NavBar(props: INavBarProps): JSX.Element {
   const { currentPage, pages, useMobile, setCurrentPage } = props;
-  const styles = useStyles()
+  const styles = useStyles();
   const [showContact, setShowContact] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const restoreFocusTargetAttribute = useRestoreFocusTarget();
@@ -80,7 +86,7 @@ export function NavBar(props: INavBarProps): JSX.Element {
       <div className={styles.mobileBanner}>
         <Button
           appearance="transparent"
-          size="small"
+          size="large"
           className={styles.mobileNavButton}
           icon={<NavigationFilled />}
           onClick={() => setIsMobileNavOpen(true)}
@@ -115,6 +121,7 @@ export function NavBar(props: INavBarProps): JSX.Element {
                   {pageConfig.header}
                 </MenuItem>
               )}
+              <DownloadResume minimize={true} />
             </MenuList>
           </DrawerBody>
         </Drawer>
